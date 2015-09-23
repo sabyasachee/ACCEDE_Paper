@@ -65,11 +65,43 @@ The inherently diverse information present in the speech signal, such as speaker
 \section{Case studies}
 Jangwon, Naveen, Danny, Jimmy, Bo ....
 
-1. Pathology speech challenge
-Jangwon, Naveen
+\subsection{Pathological speech sub-challenge}
+Recently, an automatic assessment system for speech intelligiblity and quality has been obtaining lots of attention for assisting speech therapy.
+Since manual evaluation by human experts is costly, time-consuming, and subjective, there has been research effort to develop an automatic system to analyze and judge the intelligibility and quality of patients' speech.
+The pathology challenge in Interspeech 2012 is the special session where various acoustic features and algorithms were proposed.
 
-2. Parkinsons challenge
-Jangwon, Rahul ..
+The winner of the challege~\cite{kim2012intelligibility} developed multiple expert subsystems which were fused for the final label by using Bayesian fusion models (Naive Bayes or Noise-Majority system).
+Individual subsystem focuses on particular aspects of speech, e.g., acoustic similarity to normal speech, prosody, intonation, voice quality and pronunciation quality.
+Acoustic features include pitch stylization parameters (quadratic polynomials) for pitch trajectory, speaking rate, harmony-noise ratio, jitter, shimmer, Mel-Frequency Cepstral Coefficients (MFCCs), formants, and phoneme probability feature driven from Automatic Speech Recognition (ASR) lattice.
+They employed joint classification scheme: an ad-hoc way of utilizing the high similarity of intelligibility score for the speech audio closely located in the acoustic space.
+
+Ways to handle high feature dimensionality were examined in this challenge.
+In order to capture a variety of atypicality in pathological speech, a large number of acoustic features is initially extracted.
+Hence, some feature reduction techniques were applied for achieving high accuracy on the test set.
+Sparse Gaussian process was introduced in~\cite{lu2012predicting}, where the original features were transformed to a lower dimensional feature space using kernel PCA.
+Asymmetric sparse partial least squares regression were also tested in~\cite{huang2012detecting}.
+Modified LDA was tested to further reduce the feature dimension from initially reduced dimension by PCA in~\cite{zhou2012automatic}.
+
+\subsection{Parkinson's condition sub-challenge}
+Parkinson's disease is one of the most common neurological disorders.
+In clinical practice, it is important to track the severity of its symptom.
+Using speech signal for monitoring the pregression of Parkinson's disease is an attractive approach, because it is non-invasive, fast, easy-to-obtain and cost-efficient as well as useful for speech treatment.
+The task of the Parkinson's condition challenge in Interspeech 2015 was to develop an automatic system to predict the severity of Parkinson disease using a set of speech signals of the patients.
+
+Various features on top of the standard baseline features extracted using openSMILE~\cite{eyben2010themunich} were tested for automatic severity rating.
+Rhythmic features adpoted from music information retrieval include beatspectrum~\cite{foote2002audio} and spectral irregularity~\cite{jensen1999timbre}.
+The structure of correlations among frame-level speech features were also captured using channel-delay correlation and covariance matrices on the speech waveform, delta-MFCCs and formants, and the articulatory feature streams predicted using the Directions into Velocities of Articulators (DIVA) model~\cite{guenther2006neural,williamson2015segment}.
+Using both acoustic and (predicted) articulatory information improved prediction accuracy~\cite{hahm2015parkinson}.
+
+Since the goal was to achieve the best Spearman correlation between predicted and true labels, that is the Unified Parkinson's Disease Rating Scale (UPDRS)~\cite{stebbins1998factor}, participatns tested various regressors, e.g. support vector regressor, random forest, deep neural networks and Gaussian staircase regression model~\cite{williamson2013vocal}. The winning system~\cite{grosz2015assessing} in this challenge used a deep neural network regressor on the average of multiple predictors' scores - the predictors were diversified with different hyperparameter values. 
+
+In the challenge dataset, the UPDRS score was assigned to each speaker, not each utterance.
+Hence, judging the final severity score of individual utterances based on all utterances of each speaker (or each UPDRS-score cluster) improved prediction accuracy significantly.
+Specifically, incorporating feature selection~\cite{grosz2015assessing} or the information of (predicted) prompt type~\cite{kim2015automatic} into clustering process improved severity rating accuracy as well as clustering accuracy significantly.
+
+
+
+\subsection{Depression work}
 
 3. Depression work
 
