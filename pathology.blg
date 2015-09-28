@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: pathology.aux
+The style file: IEEEbib.bst
+Database file #1: strings.bib
+Database file #2: refs.bib
+Repeated entry---line 312 of file refs.bib
+ : @inproceedings{kim2015automatic
+ :                                ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 330 of file refs.bib
+ : @inproceedings{zlotnik2015random
+ :                                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 346 of file refs.bib
+ : @inproceedings{hahm2015parkinson
+ :                                 ,
+I'm skipping whatever remains of this entry
+You've used 39 entries,
+            1838 wiz_defined-function locations,
+            665 strings with 11580 characters,
+and the built_in function-call counts, 11735 in all, are:
+= -- 1069
+> -- 517
+< -- 18
++ -- 187
+- -- 148
+* -- 908
+:= -- 1711
+add.period$ -- 39
+call.type$ -- 39
+change.case$ -- 37
+chr.to.int$ -- 0
+cite$ -- 39
+duplicate$ -- 559
+empty$ -- 1103
+format.name$ -- 148
+if$ -- 2709
+int.to.chr$ -- 0
+int.to.str$ -- 39
+missing$ -- 39
+newline$ -- 198
+num.names$ -- 39
+pop$ -- 144
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 317
+stack$ -- 0
+substring$ -- 893
+swap$ -- 216
+text.length$ -- 18
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 112
+width$ -- 41
+write$ -- 447
+(There were 3 error messages)
