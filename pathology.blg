@@ -15,45 +15,46 @@ Repeated entry---line 346 of file refs.bib
  : @inproceedings{hahm2015parkinson
  :                                 ,
 I'm skipping whatever remains of this entry
-You've used 39 entries,
+Warning--can't use both volume and number fields in wambaugh2002summary
+You've used 48 entries,
             1838 wiz_defined-function locations,
-            665 strings with 11580 characters,
-and the built_in function-call counts, 11735 in all, are:
-= -- 1069
-> -- 517
-< -- 18
-+ -- 187
-- -- 148
-* -- 908
-:= -- 1711
-add.period$ -- 39
-call.type$ -- 39
-change.case$ -- 37
+            722 strings with 13435 characters,
+and the built_in function-call counts, 13879 in all, are:
+= -- 1276
+> -- 588
+< -- 20
++ -- 215
+- -- 167
+* -- 1096
+:= -- 2039
+add.period$ -- 48
+call.type$ -- 48
+change.case$ -- 45
 chr.to.int$ -- 0
-cite$ -- 39
-duplicate$ -- 559
-empty$ -- 1103
-format.name$ -- 148
-if$ -- 2709
+cite$ -- 49
+duplicate$ -- 646
+empty$ -- 1318
+format.name$ -- 167
+if$ -- 3183
 int.to.chr$ -- 0
-int.to.str$ -- 39
-missing$ -- 39
-newline$ -- 198
-num.names$ -- 39
-pop$ -- 144
+int.to.str$ -- 48
+missing$ -- 49
+newline$ -- 243
+num.names$ -- 48
+pop$ -- 162
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 317
+skip$ -- 345
 stack$ -- 0
-substring$ -- 893
-swap$ -- 216
-text.length$ -- 18
+substring$ -- 1087
+swap$ -- 237
+text.length$ -- 20
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 112
-width$ -- 41
-write$ -- 447
+warning$ -- 1
+while$ -- 137
+width$ -- 50
+write$ -- 546
 (There were 3 error messages)
