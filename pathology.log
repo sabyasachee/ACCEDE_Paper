@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.5.13)  29 SEP 2015 10:51
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.5.13)  29 SEP 2015 11:50
 entering extended mode
  %&-line parsing enabled.
 **pathology.tex
@@ -163,36 +163,38 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <9> not available
 LaTeX Warning: Citation `australia2009criteria' on page 1 undefined on input li
 ne 63.
 
-
-Underfull \hbox (badness 1253) in paragraph at lines 88--89
-[]\OT1/ptm/m/n/9 Voice qual-ity and prosodic fea-tures have been ex-ten-sively
- []
-
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 
-] [2] (./pathology.bbl
+]
+Underfull \hbox (badness 1253) in paragraph at lines 97--98
+[]\OT1/ptm/m/n/9 Voice qual-ity and prosodic fea-tures have been ex-ten-sively
+ []
+
+[2] (./pathology.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 4--8
 []\OT1/ptm/m/n/9 American Speech-Language-Hearing As-so-ci-a-tion et al.,
  []
 
-
+[3]
 Underfull \hbox (badness 1616) in paragraph at lines 196--200
 []\OT1/ptm/m/n/9 H.V. Sharma, M. Hasegawa-Johnson, J. Gun-der-son, and
  []
 
-[3]
+
 Underfull \hbox (badness 1354) in paragraph at lines 221--225
 []\OT1/ptm/m/n/9 P.A. Hee-man, R. Lunsford, E. Sel-f-ridge, L. Black, and
  []
 
-
+[4]
 Underfull \hbox (badness 1365) in paragraph at lines 315--321
 []\OT1/ptm/m/n/9 Tam[]as Gr[]oz, R[]obert Busa-Fekete, G[]abor Gosz-tolya, and
  []
 
-) [4] (./pathology.aux)
+) [5
+
+] (./pathology.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -209,9 +211,9 @@ Here is how much of TeX's memory you used:
 ve/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/t
 imes/utmbi8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></u
 sr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on pathology.pdf (4 pages, 82210 bytes).
+Output written on pathology.pdf (5 pages, 84117 bytes).
 PDF statistics:
- 32 PDF objects out of 1000 (max. 8388607)
+ 35 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -73,16 +73,25 @@ Often, training ML-SP algorithms use judgements from trained pathologists \cite{
 Although pathologists can provide the best assessment of pathological conditions, there could be variations within their evaluations. 
 This variability stems from changing definitions as well as subjectivity involved in making the decisions.
 We would also like to point out that standards for clinical competence in speech-language pathology \cite{} as laid by ASHA are also scrutinized and revised periodically adding another source of variability to the professional judgements.    
+Whereas speech pathologists are the most reliable source of diagnosis used by ML-SP algorithms, one should be careful about the subjectivity which can be reduced by using assesments from multiple pathologists using joint annotator modeling schemes \cite{}. 
 
+\subsection{Patient variability}
+Another factor impacting the quality of ML-SP algorithms is the patient specific variability in modeling population suffering from a specific pathological condition. 
+As often the goal of these algorithms is to capture speech/vocal patterns for each pathological condition, patient specific variability serves as a source of noise.
+Although there are methods to discount the speaker specific traits (e.g., speaker normalization, speaker independent evaluation), disassociating speaker specific traits from the characteristics of a pathological condition is challenging both in terms of modeling and analysis. 
+On the other hand, one can also argue in the favor of patient specific models opening up the questions of model specificy vs generality. 
+%and should be suppressed for most effective evaluation of the conditions. 
+%Apart from the application of standard techniques such as speaker normalization and speaker independent cross-validation during model evaluation, standardization techniques accounting for differences in sources of pathological condition and scientific regulation of population demographics (e.g., race, gender) should also be performed. 
 
-\subsection{Speaker variability}
+Apart from these challenges, ML-SP research also faces the questions regarding the choice of modeling techniques, recording conditionsand finding the right balance between data-driven and knowledge-driven modeling. 
+Although accounting for all these factors in understanding pathological speech using ML-SP techniques could be fairly complex, researchers have made succesful strides in mining intricate patterns in the domain of pathological speech.
+In the next section, we list a few approaches using combinations of domain knowledge as well as the data driven learning in modeling patterns in pathological speech. 
 
-\subsection{Approaches by speech scientists}
-
-\subsubsection{Obtaining data}
-Annotations, data demographics, data collection environment
-
-\subsubsection{Features}
+\section{Domain knowldege + data driven analysis of pathological conditions}
+Given the intricate nature of pathological conditions, several researchers have explored different ML-SP modeling aspects. 
+In this section, we focus on two approaches addressing: (i) feature design from pathology speech signals and, (ii) machine learning algorithms capturing various feature patterns in pathological speech.
+ 
+\subsection{Feature design}
 Previous studies have attempted to capture the wide variability of pathological speech through various acoustic and phonological features, as well as non-verbal discourse markers.
 
 Voice quality and prosodic features have been extensively used because of their high interpretability and computational efficiency~\cite{van2010computational,tsanas2012novel,bone2014psychologist}, while multi-scale spectro-temporal modulation indices attempt to represent the irregular spectral perturbations of pathological speech~\cite{liss2010discriminating,falk2012characterization,williamson2015automatic}. Vocal source excitation and articulatory features have been proposed in order to capture the malfunctioning of various parts of the speech production system caused by vocal disorders~\cite{falk2012characterization,hahm2015parkinson}. Other efforts have focused on developing distance measures between healthy and pathological speech~\cite{gu2005disordered}. These frame-level features can be incorporated into long-term measures through phone or utterance level functionals~\cite{kim2015automatic}, contour parameterization~\cite{kim2015automatic2}, and other non-linear transformations~\cite{kim2015automatic,an2015automatic,middag2011combining}.
@@ -93,11 +102,12 @@ Non-verbal vocalizations are an essential part of spoken communication for regul
 
 The inherently diverse information present in the speech signal, such as speaker traits, gender and age effects, environmental conditions, etc., makes it hard to disentangle actual pathology-dependent conditions from other factors. Although previous studies have indicated strong correlates of many of the aforementioned features to pathological constructs, careful methodological and experimental planning has to be conducted in order to make sure that the segmentation of the acoustic features space is performed in terms of the relevant pathological effects~\cite{bone2013classifying}. Towards this direction, ecological data capture procedures, reduced-size interpretable features, appropriate statistical analysis, and legitimate experimental validation are encouraged.
 
-\subsubsection{Machine learning}
+\subsection{Machine learning}
+Naveen
+
+\section{Design of case studies for pathological speech analysis}
 
 
-\section{Case studies}
-Jangwon, Naveen, Danny, Jimmy, Bo ....
 
 \subsection{Pathological speech sub-challenge}
 Recently, an automatic assessment system for speech intelligiblity and quality has been obtaining lots of attention for assisting speech therapy.
