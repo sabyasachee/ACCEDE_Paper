@@ -44,21 +44,36 @@ To address this, she describes a four level framework characterizing pathologica
 Further in \cite{mcneil2009clinical}, Kent, Ballard et al. and Forrest et al. describe assessment/examination methods for motor speech disorders and speech production mechanism. 
 Later, Kent \cite{kent2000research} reviewed research on speech motor control and its disorders.
 Particular emphasis has also been laid on specific speech language and disorders such as apraxia \cite{wambaugh2002summary}, dysarthria \cite{yorkston2007evidence}, sluttering \cite{bothe2006stuttering}, and voice disorders (e.g., hoarseness, spasmodic dysphonia) \cite{aronson2011clinical}. 
-Apart from this, a research has also investigated speech disorders in specific population groups such as children with developmental disorders \cite{millar2006impact,schlosser2008effects}, people with schizophrenia \cite{delisi2001speech} and Parkinson's desease \cite{critchley1981speech}.
+Apart from this, research has also investigated speech disorders in specific population groups such as children with developmental disorders \cite{millar2006impact,schlosser2008effects}, people with schizophrenia \cite{delisi2001speech} and Parkinson's desease \cite{critchley1981speech}.
 
 In this work, we specifically address the challenges in the inter-disciplinary approach of investigating pathological speech disorders using speech processing, acoustic signal processing and machine learning tools. 
-Although, a considerable amount of research has presented novel Signal Processing (SP)/Machine Learning (ML) schemes with relation to pathological speech, we investigate three factors: (i) challenges in application of (ML-SP) to the domain of pathological speech understanding (ii) domain knowlege driven analysis (ex: feature design, machine learning algorithsm) of pathological speech characteristics and, (iii) design of specific case studies to investigate pathological speech. 
+Although, a considerable amount of research has presented novel Signal Processing (SP)/Machine Learning (ML) schemes with relation to pathological speech, we investigate three factors: (i) challenges in application of (ML-SP) to the domain of pathological speech understanding (ii) domain knowledge driven analysis (ex: feature design, machine learning algorithms) of pathological speech characteristics and, (iii) design of specific case studies to investigate pathological speech. 
 Over the course of this paper, we draw specific examples in each of these topics and point out novel techniques as well as suggest future work.
- 
-\section{Challenges in the domain of understanding pathological conditions}
-Advances in understainding the causes and characteristics of pathological conditions have allowed for a theoretically grounded application of ML-SP techniques to the domain.
+We discuss each of these topics in detail below. 
 
+\section{Challenges in the domain of understanding pathological conditions}
+Advances in understanding the causes and characteristics of pathological conditions have allowed for a theoretically grounded application of ML-SP techniques to the domain.
+However, the sensitive nature of medical research calls for a thoroughly listing of the objectives and limitations for the experiments being conducted.
+In this section, we list out a few challenges that ML-SP researchers face in dealing with pathology data.
+We would like to point out that this list by no means is exhaustive but certainly needs attention.
 
 \subsection{Defining pathological speech}
-Ever evolving.
+Several ML-SP algorithms require a crisp definition of what is being modeled/investigated.
+However due to the evolving nature of the study of pathological speech, definitions are being formulated or revised. 
+The Speech Pathology Association of Australia \cite{australia2009criteria} cites several pathologists who describe the terminology in the field as being inconsistent, variable and inadequate. 
+This poses a major challenge in terms of ML-SP research as it could turn out to be inaccurate or irrelevant as the definitions change.
+Apart from this, ML-SP algorithms also need to be cautiously designed keeping in mind the spectrum of pathological speech conditions.
+For instance, just within aphasia the severity could be categorized into anomic, Wernicke's, mixed non-fluent, Broca's or global aphasia \cite{}. 
+As there may/may not be a transfer of knowledge in understanding these conditions, the specificity and generality of symptoms being addressed should be laid out clearly for a larger impact and clearer understanding of pathological conditions. 
+
 
 \subsection{Subjective Impressions}
-Involves training pathologists, brings in inherent problems of subjectivity.
+This challenge in training ML-SP algorithms follows from the previous argument relating to the evolving nature of definitions of pathological speech.
+Often, training ML-SP algorithms use judgements from trained pathologists \cite{} to model speech patterns.
+Although pathologists can provide the best assessment of pathological conditions, there could be variations within their evaluations. 
+This variability stems from changing definitions as well as subjectivity involved in making the decisions.
+We would also like to point out that standards for clinical competence in speech-language pathology \cite{} as laid by ASHA are also scrutinized and revised periodically adding another source of variability to the professional judgements.    
+
 
 \subsection{Speaker variability}
 
