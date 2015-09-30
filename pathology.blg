@@ -15,46 +15,47 @@ Repeated entry---line 346 of file refs.bib
  : @inproceedings{hahm2015parkinson
  :                                 ,
 I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for ""
 Warning--can't use both volume and number fields in wambaugh2002summary
-You've used 48 entries,
+You've used 58 entries,
             1838 wiz_defined-function locations,
-            722 strings with 13435 characters,
-and the built_in function-call counts, 13879 in all, are:
-= -- 1276
-> -- 588
-< -- 20
-+ -- 215
-- -- 167
-* -- 1096
-:= -- 2039
-add.period$ -- 48
-call.type$ -- 48
-change.case$ -- 45
+            782 strings with 15646 characters,
+and the built_in function-call counts, 16413 in all, are:
+= -- 1508
+> -- 706
+< -- 21
++ -- 259
+- -- 201
+* -- 1323
+:= -- 2443
+add.period$ -- 59
+call.type$ -- 58
+change.case$ -- 55
 chr.to.int$ -- 0
-cite$ -- 49
-duplicate$ -- 646
-empty$ -- 1318
-format.name$ -- 167
-if$ -- 3183
+cite$ -- 59
+duplicate$ -- 742
+empty$ -- 1558
+format.name$ -- 201
+if$ -- 3735
 int.to.chr$ -- 0
-int.to.str$ -- 48
-missing$ -- 49
-newline$ -- 243
-num.names$ -- 48
-pop$ -- 162
+int.to.str$ -- 58
+missing$ -- 59
+newline$ -- 293
+num.names$ -- 58
+pop$ -- 183
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 345
+skip$ -- 373
 stack$ -- 0
-substring$ -- 1087
-swap$ -- 237
-text.length$ -- 20
+substring$ -- 1300
+swap$ -- 258
+text.length$ -- 21
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 1
-while$ -- 137
-width$ -- 50
-write$ -- 546
+while$ -- 164
+width$ -- 60
+write$ -- 656
 (There were 3 error messages)

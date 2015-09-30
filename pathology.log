@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.5.13)  29 SEP 2015 11:59
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.5.13)  29 SEP 2015 18:31
 entering extended mode
  %&-line parsing enabled.
 **pathology.tex
@@ -160,15 +160,14 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 32.
 
 
-LaTeX Warning: Citation `australia2009criteria' on page 1 undefined on input li
-ne 63.
+LaTeX Warning: Citation `' on page 1 undefined on input line 59.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 
 ]
-Underfull \hbox (badness 1253) in paragraph at lines 97--98
+Underfull \hbox (badness 1253) in paragraph at lines 111--112
 []\OT1/ptm/m/n/9 Voice qual-ity and prosodic fea-tures have been ex-ten-sively
  []
 
@@ -178,32 +177,52 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--8
  []
 
 [3]
-Underfull \hbox (badness 1616) in paragraph at lines 196--200
+Underfull \hbox (badness 10000) in paragraph at lines 137--143
+[]\OT1/ptm/m/n/9 Everthon Silva Fon-seca, Ro-drigo Capo-bianco Guido,
+ []
+
+
+Underfull \hbox (badness 1931) in paragraph at lines 159--165
+[]\OT1/ptm/m/n/9 Speech Pathol-ogy Aus-tralia,  ``Cri-te-ria for the anal-y-sis
+
+ []
+
+
+Underfull \hbox (badness 1383) in paragraph at lines 159--165
+\OT1/ptm/m/n/9 of speech pathol-ogy terms: chal-lenges and a method-ol-
+ []
+
+
+Underfull \hbox (badness 2285) in paragraph at lines 159--165
+\OT1/ptm/m/n/9 ogy,''  \OT1/ptm/m/it/9 Mel-bourne: Speech Pathol-ogy Aus-tralia
+. Avail-
+ []
+
+
+Underfull \hbox (badness 1616) in paragraph at lines 263--267
 []\OT1/ptm/m/n/9 H.V. Sharma, M. Hasegawa-Johnson, J. Gun-der-son, and
  []
 
 
-Underfull \hbox (badness 1354) in paragraph at lines 221--225
+Underfull \hbox (badness 1354) in paragraph at lines 288--292
 []\OT1/ptm/m/n/9 P.A. Hee-man, R. Lunsford, E. Sel-f-ridge, L. Black, and
  []
 
 [4]
-Underfull \hbox (badness 1365) in paragraph at lines 315--321
+Underfull \hbox (badness 1365) in paragraph at lines 382--388
 []\OT1/ptm/m/n/9 Tam[]as Gr[]oz, R[]obert Busa-Fekete, G[]abor Gosz-tolya, and
  []
 
-) [5
-
-] (./pathology.aux)
+) [5] (./pathology.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 1719 strings out of 493848
- 20793 string characters out of 1152823
- 85467 words of memory out of 3000000
- 4995 multiletter control sequences out of 15000+50000
+ 1729 strings out of 493848
+ 20985 string characters out of 1152823
+ 85491 words of memory out of 3000000
+ 5005 multiletter control sequences out of 15000+50000
  21745 words of font info for 50 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  27i,7n,20p,1102b,251s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -211,7 +230,7 @@ Here is how much of TeX's memory you used:
 ve/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/t
 imes/utmbi8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></u
 sr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on pathology.pdf (5 pages, 84352 bytes).
+Output written on pathology.pdf (5 pages, 89329 bytes).
 PDF statistics:
  35 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

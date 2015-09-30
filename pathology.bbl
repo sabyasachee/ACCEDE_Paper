@@ -96,6 +96,73 @@ EM~Critchley,
 \newblock {\em Journal of Neurology, Neurosurgery \& Psychiatry}, vol. 44, no.
   9, pp. 751--758, 1981.
 
+\bibitem{rees1973auditory}
+Norma~S Rees,
+\newblock ``Auditory processing factors in language disorders: The view from
+  procrustes' bed,''
+\newblock {\em Journal of Speech and Hearing Disorders}, vol. 38, no. 3, pp.
+  304--315, 1973.
+
+\bibitem{davis1979acoustic}
+Steven~B Davis,
+\newblock ``Acoustic characteristics of normal and pathological voices,''
+\newblock {\em Speech and language: advances in basic research and practice},
+  vol. 1, pp. 271--335, 1979.
+
+\bibitem{robin1989auditory}
+Donald~A Robin, J~Bruce Tomblin, Ann Kearney, and Linda~N Hug,
+\newblock ``Auditory temporal pattern learning in children with speech and
+  language impairments,''
+\newblock {\em Brain and Language}, vol. 36, no. 4, pp. 604--613, 1989.
+
+\bibitem{hillenbrand1994acoustic}
+James Hillenbrand, Ronald~A Cleveland, and Robert~L Erickson,
+\newblock ``Acoustic correlates of breathy vocal quality,''
+\newblock {\em Journal of Speech, Language, and Hearing Research}, vol. 37, no.
+  4, pp. 769--778, 1994.
+
+\bibitem{abberton1989laryngographic}
+Evelyn~RM Abberton, David~M Howard, and Adrian~J Fourcin,
+\newblock ``Laryngographic assessment of normal voice: a tutorial,''
+\newblock {\em Clinical Linguistics \& Phonetics}, vol. 3, no. 3, pp. 281--296,
+  1989.
+
+\bibitem{manfredi2000adaptive}
+Claudia Manfredi,
+\newblock ``Adaptive noise energy estimation in pathological speech signals,''
+\newblock {\em Biomedical Engineering, IEEE Transactions on}, vol. 47, no. 11,
+  pp. 1538--1543, 2000.
+
+\bibitem{fonseca2007wavelet}
+Everthon~Silva Fonseca, Rodrigo~Capobianco Guido, Paulo~Rog{\'e}rio Scalassara,
+  Carlos~Dias Maciel, and Jos{\'e}~Carlos Pereira,
+\newblock ``Wavelet time-frequency analysis and least squares support vector
+  machines for the identification of voice disorders,''
+\newblock {\em Computers in Biology and Medicine}, vol. 37, no. 4, pp.
+  571--578, 2007.
+
+\bibitem{chee2009mfcc}
+Lim~Sin Chee, Ooi~Chia Ai, Muthusamy Hariharan, and Sazali Yaacob,
+\newblock ``Mfcc based recognition of repetitions and prolongations in
+  stuttered speech using k-nn and lda,''
+\newblock in {\em Research and Development (SCOReD), 2009 IEEE Student
+  Conference on}. IEEE, 2009, pp. 146--149.
+
+\bibitem{schuller2012interspeech}
+Bj{\"o}rn Schuller, Stefan Steidl, Anton Batliner, Elmar N{\"o}th, Alessandro
+  Vinciarelli, Felix Burkhardt, Rob Van~Son, Felix Weninger, Florian Eyben,
+  Tobias Bocklet, et~al.,
+\newblock ``The interspeech 2012 speaker trait challenge.,''
+\newblock in {\em INTERSPEECH}, 2012.
+
+\bibitem{australia2009criteria}
+Speech~Pathology Australia,
+\newblock ``Criteria for the analysis of speech pathology terms: challenges and
+  a methodology,''
+\newblock {\em Melbourne: Speech Pathology Australia. Available online at:
+  http://www. speechpathologyaustralia. org. au/library/Terminology\% 20Frame
+  works. pdf, accessed}, vol. 16, 2009.
+
 \bibitem{van2010computational}
 J.P.H. Van~Santen, E.T. Prud'hommeaux, L.M. Black, and M.~Mitchell,
 \newblock ``Computational prosodic markers for autism,''
