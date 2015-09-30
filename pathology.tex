@@ -45,7 +45,7 @@ One such interdisciplinary approach makes use of Machine Learning and Signal Pro
 As this inter-disciplinary study advances towards maturity, one needs to evaluate the promises and pitfalls of the approach.
 In this work, we present a critical review of the application of ML-SP tools in investigating speech pathological disorders. 
 We specifically focus on three aspects of this inter-disciplinary study and list: (i) challenges in the application of ML-SP tools to the domain of speech pathology (ii) review of current state of domain knowledge + data driven analysis of pathological conditions and, (iii) investigating the design of case studies directed towards pathological speech analysis. 
-By sharing our point of view on these aspects, we aim to critique the current state of the art \todo[author=naveen]{in what?} and inform future endeavors in the application of ML-SP tools to speech pathology. 
+By sharing our point of view on these aspects, we aim to critique the current state of the art and inform future endeavors in the application of ML-SP tools to speech pathology. 
 
 \subsection{Background}
 Within the characterization of speech pathological disorders, Van der Merwe \cite{van1997characterization,mcneil2009clinical} provides a sound theoretical foundation. 
@@ -56,9 +56,9 @@ Later, Kent \cite{kent2000research} reviewed research on speech motor control an
 Particular emphasis has also been laid on specific speech language and disorders such as apraxia \cite{wambaugh2002summary}, dysarthria \cite{yorkston2007evidence}, sluttering \cite{bothe2006stuttering}, and voice disorders (e.g., hoarseness, spasmodic dysphonia) \cite{aronson2011clinical}. 
 Apart from this, pathology researchers have also investigated speech disorders in specific population groups such as children with developmental disorders \cite{millar2006impact,schlosser2008effects}, people with schizophrenia \cite{delisi2001speech} and Parkinson's disease \cite{critchley1981speech}.
 
-Application of ML-SP techniques to the domain of speech pathology is not new and \cite{rees1973auditory,davis1979acoustic,robin1989auditory} are a few of the earlier works that made use of contemporary ML-SP tools at the time towards the understanding of pathological disorders. 
+Application of ML-SP techniques to the domain of speech pathology is not new and \cite{rees1973auditory,davis1979acoustic,robin1989auditory} are a few of the earlier works that made use of contemporary ML-SP tools towards the understanding of pathological disorders. 
 The progress of this study over years can be tracked using works such as \cite{hillenbrand1994acoustic,abberton1989laryngographic,manfredi2000adaptive}.
-Over the last decade, advances in the field of machine learning has lead to several investigations laying special focus on detection of these speech disorders \cite{fonseca2007wavelet,chee2009mfcc}. Following this, various Interspeech challenges \cite{schuller2012interspeech,}, further attracted special interest in the application of ML-SP \todo[author=naveen]{ML-SP probably being over used} techniques to detection and analysis of pathological conditions.  
+Over the last decade, advances in the field of machine learning has lead to several investigations laying special focus on detection of these speech disorders \cite{fonseca2007wavelet,chee2009mfcc}. Following this, various Interspeech challenges \cite{schuller2012interspeech,}, further attracted special interest in the application of ML-SP techniques to detection and analysis of pathological conditions.  
 In this work, we summarize these and various other inter-disciplinary approaches investigating pathological speech disorders using speech processing, acoustic signal processing and machine learning tools.
 %Although, a considerable amount of research has presented novel Signal Processing (SP)/Machine Learning (ML) schemes with relation to pathological speech, we investigate three factors: (i) challenges in application of (ML-SP) to the domain of pathological speech understanding (ii) domain knowledge driven analysis (ex: feature design, machine learning algorithms) of pathological speech characteristics and, (iii) design of specific case studies to investigate pathological speech.
 Over the course of this paper, we discuss the challenges, both knowledge and data driven approaches and case study designs by drawing specific examples from existing literature. 
@@ -70,7 +70,7 @@ Finally, we present our conclusions in Section 5.
 
 \section{Challenges in the domain of understanding pathological conditions}
 Advances in understanding the causes and characteristics of pathological conditions have allowed for a theoretically grounded application of ML-SP techniques to the domain.
-However, the sensitive nature of medical research calls for a thoroughly listing of the objectives and limitations for the experiments being conducted.
+However, the sensitive nature of medical research calls for thoroughly listing of the objectives and limitations for the experiments being conducted.
 In this section, we list out a few challenges that ML-SP researchers face in dealing with pathology data.
 We would like to point out that this list is by no means exhaustive but certainly needs attention.
 
@@ -93,6 +93,7 @@ We would also like to point out that standards for clinical competence in speech
 While speech pathologists are the most reliable source of diagnosis used by ML-SP algorithms, one should be careful about their subjectivity which can be reduced by using assesments from multiple pathologists using joint annotator modeling schemes \cite{}. 
 
 \subsection{Patient variability}
+\label{sed:PatVar}
 Another factor impacting the quality of ML-SP algorithms is the patient specific variability in modeling population suffering from a specific pathological condition. 
 As often the goal of these algorithms is to capture speech/vocal patterns for each pathological condition, patient specific variability serves as a source of noise.
 Although there are methods to discount the speaker specific traits (e.g., speaker normalization, speaker independent evaluation), disassociating speaker specific traits\cite{berisha2013selecting} from the characteristics of a pathological condition is challenging both in terms of modeling and analysis. 
@@ -107,6 +108,7 @@ In the next section, we list a few approaches using combinations of domain knowl
 \section{Domain knowldege + data driven analysis of pathological conditions}
 Given the intricate nature of pathological conditions, several researchers have explored different ML-SP modeling aspects. 
 In this section, we focus on two approaches addressing: (i) feature design from pathology speech signals and, (ii) machine learning algorithms capturing various feature patterns in pathological speech.
+These methods offer a combination of domain knowledge and data driven techniques and have shown promise in analysis of pathological speech.
  
 \subsection{Feature design}
 Previous studies have attempted to capture the wide variability of pathological speech through various acoustic and phonological features, as well as non-verbal discourse markers.
@@ -132,24 +134,47 @@ However, this statement should in no way be taken to imply that the scope of dat
 
 \section{Design of case studies for pathological speech analysis}
 In this section, we focus on design of case studies of pathological speech analysis and list a few studies which have have lead to a considerable interest in the field. 
-We point out the characteristics of these case studies, various approaches taken within these studies and a few suggestions regarding future design of similar studies. 
+We discuss the characteristics of these case studies, various approaches taken within these studies and a few suggestions regarding future design of similar studies. 
+In particular, we focus on (i) pathological speech sub-challenge, Interspeech 2012, (ii) Parkinson's condition sub-challenge, Interspeech 2012 and, (iii) study of mental disorders affecting speech. 
+We would like to point out that these case studies address a part of the problem in understanding pathological speech, such as assessing intelligibility of speech and analyzing speech quality and offer piecemeal solutions towards the larger problem of completely understading pathological speech production and perception.
 
-\subsection{Pathological speech sub-challenge}
-Recently, an automatic assessment system for speech intelligiblity and quality has been obtaining lots of attention for assisting speech therapy.
-Since manual evaluation by human experts is costly, time-consuming, and subjective, there has been research effort to develop an automatic system to analyze and judge the intelligibility and quality of patients' speech.
-The pathology challenge in Interspeech 2012 is the special session where various acoustic features and algorithms were proposed.
+\subsection{Pathological speech sub-challenge, Interspeech 2012}
+Recently, an automatic assessment system for speech intelligiblity and quality has been obtaining lots of attention for assisting speech therapy and the and the pathological speech sub-challenge was a step towards this.
+Since manual evaluation by human experts is costly, time-consuming, and subjective, this challenge called for developing an automatic system to analyze and judge the speech intelligibility of patients suffering from pathological speech due to neck and head tumors.
+An important characteristic of the data set used in this challenge was that it contained a longitudinal study of patients being evaluated before and after a chemo-radiation treatment.
+Furhtermore, the patients were evaluated based on a recitation of a dutch script whereas not all of them were native duthc speakers. 
+The evaluation was performed using 13 pathologists rating intelligibility on a scale of 1-7.
 
-The winner of the challege~\cite{kim2012intelligibility} developed multiple expert subsystems which were fused for the final label by using Bayesian fusion models (Naive Bayes or Noise-Majority system).
-Individual subsystem focuses on particular aspects of speech, e.g., acoustic similarity to normal speech, prosody, intonation, voice quality and pronunciation quality.
-Acoustic features include pitch stylization parameters (quadratic polynomials) for pitch trajectory, speaking rate, harmony-noise ratio, jitter, shimmer, Mel-Frequency Cepstral Coefficients (MFCCs), formants, and phoneme probability feature driven from Automatic Speech Recognition (ASR) lattice.
-They employed joint classification scheme: an ad-hoc way of utilizing the high similarity of intelligibility score for the speech audio closely located in the acoustic space.
+This data set design has several interesting implications that we discuss here.
+First of all, longitudinal studies like this allow for evaluating the effectiveness of treatment being administered.
+This can be crucial in determining the course of treatment for a patient.
+Also, an attempt is made to reduce the subjectivity and variability of pathologist judgements by using 13 of them.
+For the purpose of the challenge, judgement from each pathologist is assigned a weight and the final intelligibility score is the sum of these weighted scores.
+A combination of expert judgements has been shown to reduce annotator noise \cite{} and we encourage the application of recently developed multiple annotator schemes used in inferring the final intelligibility ground truth. 
+Another intersting aspect of the data is that it is realistic in the sense that it includes both native and non-native speakers undergoing evaluation.
+This presents ML-SP methods a challenge of accounting for patient variability as we discussed in section \ref{sec:PatVar}.
+Non-nativeness has been shown to impact the intelligibility of speakers \cite{van2001intelligibility} and ML-SP are posed with the challenge of segregating the impact of pathological speech vs non-nativeness on speech intelligibility. 
 
-Ways to handle high feature dimensionality were examined in this challenge.
-In order to capture a variety of atypicality in pathological speech, a large number of acoustic features is initially extracted.
-Hence, some feature reduction techniques were applied for achieving high accuracy on the test set.
-Sparse Gaussian process was introduced in~\cite{lu2012predicting}, where the original features were transformed to a lower dimensional feature space using kernel PCA.
-Asymmetric sparse partial least squares regression were also tested in~\cite{huang2012detecting}.
-Modified LDA was tested to further reduce the feature dimension from initially reduced dimension by PCA in~\cite{zhou2012automatic}.
+Considering the application of machine learning techniques in this challenge, a lot of researchers focused on dimensionality reduction techniques on a large set of features. 
+For instace, Kim et al. \cite{kim2012intelligibility} developed multiple expert subsystems on feature subsets which were fused for the final label by using Bayesian fusion models (Naive Bayes or Noise-Majority system).
+Lu et al. \cite{lu2012predicting} used sparse Gaussian process, Huang et al. ~\cite{huang2012detecting} used asymmetrical sparse partial least squares regression and Zhou et al. \cite{zhou2012automatic} applied a combination of LDA and PCA techniques.
+This challenge also lead to focus on design of neurophysiology, biophysics and psychoacoustics \cite{zhou2012automatic} inspired features in intelligibility assessment and Stark et al. \cite{stark2012interspeech} investigated the impact of speaker and sentence on intelligibility assesments probing questions related to generality versus specificity.
+
+Overall, this challenge presented some unique data characteristics and reseachers presented novel methods answering some questions related to application of ML-SP tools towards understaning pathological speech.
+In the next section, we describe another interspeech challenge investigating the prediction of Parkinson's disease severity from speech. 
+
+%This challenge also lead to the development of several ML-SP techniques addressing intellibility inference from speech cues.  
+%The winner of the challege~\cite{kim2012intelligibility} developed multiple expert subsystems which were fused for the final label by using Bayesian fusion models (Naive Bayes or Noise-Majority system).
+%Individual subsystem focuses on particular aspects of speech, e.g., acoustic similarity to normal speech, prosody, intonation, voice quality and pronunciation quality.
+%Acoustic features include pitch stylization parameters (quadratic polynomials) for pitch trajectory, speaking rate, harmony-noise ratio, jitter, shimmer, Mel-Frequency Cepstral Coefficients (MFCCs), formants, and phoneme probability feature driven from Automatic Speech Recognition (ASR) lattice.
+%They employed joint classification scheme: an ad-hoc way of utilizing the high similarity of intelligibility score for the speech audio closely located in the acoustic space.
+
+%Ways to handle high feature dimensionality were examined in this challenge.
+%In order to capture a variety of atypicality in pathological speech, a large number of acoustic features is initially extracted.
+%Hence, some feature reduction techniques were applied for achieving high accuracy on the test set.
+%Sparse Gaussian process was introduced in~\cite{lu2012predicting}, where the original features were transformed to a lower dimensional feature space using kernel PCA.
+%Asymmetric sparse partial least squares regression were also tested in~\cite{huang2012detecting}.
+%Modified LDA was tested to further reduce the feature dimension from initially reduced dimension by PCA in~\cite{zhou2012automatic}.
 
 \subsection{Parkinson's condition sub-challenge}
 Parkinson's disease is one of the most common neurological disorders.
