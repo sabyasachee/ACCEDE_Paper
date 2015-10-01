@@ -124,29 +124,33 @@ In particular, we focus on (i) pathological speech sub-challenge, Interspeech 20
 These case studies address components of understanding pathological speech, such as assessing intelligibility of speech and analyzing speech quality, and offer piecemeal solutions towards the larger problem of complete quantitative understading of pathological speech production and perception.
 
 \subsection{Pathological Speech Sub-Challenge, Interspeech 2012}
-Recently, an automatic assessment system for speech intelligiblity and quality has been obtaining lots of attention for assisting speech therapy and the and the pathological speech sub-challenge was a step towards this.
-Since manual evaluation by human experts is costly, time-consuming, and subjective, this challenge called for developing an automatic system to analyze and judge the speech intelligibility of patients suffering from pathological speech due to neck and head tumors.
-An important characteristic of the data set used in this challenge was that it contained a longitudinal study of patients being evaluated before and after a chemo-radiation treatment.
-Furhtermore, the patients were evaluated based on a recitation of a dutch script whereas not all of them were native duthc speakers. 
-The evaluation was performed using 13 pathologists rating intelligibility on a scale of 1-7.
+%Recently, an automatic assessment system for speech intelligiblity and quality has been obtaining lots of attention for assisting speech therapy and the and the pathological speech sub-challenge was a step towards this.
+There has been considerable interest to develop automatic assessment system for speech intelligibility and quality. It was hoped to offer more accurate, objective and scalable engineering solutions in order to assist speech therapies in clinical practice. Pathological speech sub-challenge in Interspeech 2012 was designed to bring more attentions from speech signal processing and machine learning communities into this domain and promote technical advance in this area.
+%Since manual evaluation by human experts is costly, time-consuming, and subjective, 
+In particular, this challenge called for developing an automatic system to analyze and judge the speech intelligibility of patients suffering from pathological speech due to neck and head tumors.
+The challenge dataset contained speech audio of the patients, recorded before and after a chemo-radiation treatment in order to monitor their speech intelligibility during the period of the treatment and speech therapy.
+%Furhtermore, the patients were evaluated based on a recitation of a dutch script whereas not all of them were native duthc speakers. 
+The speech audio was recorded while the patients were reading Dutch sentences, whereas some of them were not the native speakers of Dutch.
+The intelligibility of individual speech utterances was judged on a scale of 1-7 by 13 experts.
 
-This data set design has several interesting implications that we discuss here.
-First of all, longitudinal studies like this allow for evaluating the effectiveness of treatment being administered.
+This data set design has several interesting implications.
+First of all, the longitudinal speech data allows for the evaluation of the progress of speech therapy to improve the speech intelligibility.
+%studies like this allow for evaluating the effectiveness of treatment being administered.
 This can be crucial in determining the course of treatment for a patient.
-Also, an attempt is made to reduce the subjectivity and variability of pathologist judgements by using 13 of them.
-For the purpose of the challenge, judgement from each pathologist is assigned a weight and the final intelligibility score is the sum of these weighted scores.
-A combination of expert judgements has been shown to reduce annotator noise \cite{} and we encourage the application of recently developed multiple annotator schemes used in inferring the final intelligibility ground truth. 
-Another intersting aspect of the data is that it is realistic in the sense that it includes both native and non-native speakers undergoing evaluation.
-This presents ML-SP methods a challenge of accounting for patient variability as we discussed in section \ref{sec:PatVar}.
-Non-nativeness has been shown to impact the intelligibility of speakers \cite{van2001intelligibility} and ML-SP are posed with the challenge of segregating the impact of pathological speech vs non-nativeness on speech intelligibility. 
+Secondly, an attempt is made to reduce the subjectivity and variability of expert judgements by using 13 of them.
+For the purpose of the challenge, the final intelligibility score for each utterance was determined as the weighted sum of individuals' ratings.
+A combination of expert judgements has been shown to reduce annotator noise \cite{} and we encourage the application of recently developed multiple annotator schemes used for determining the final intelligibility label. 
+Another intersting aspect of the data is that the data contains speech audio of both native and non-native speakers. Although it fits a realistic scenario in clinical practice, this presents ML-SP methods a challenge of accounting for patient variability as we discussed in section \ref{sec:PatVar}.
+The nativeness of a speaker affects the intelligibility of the speech sound as well \cite{van2001intelligibility}, hence it is important to segregate the impact of the disease and the treatment v.s. the nativeness of the speaker on the speech intelligibility.
 
-Considering the application of machine learning techniques in this challenge, a lot of researchers focused on dimensionality reduction techniques on a large set of features. 
-For instace, Kim et al. \cite{kim2012intelligibility} developed multiple expert subsystems on feature subsets which were fused for the final label by using Bayesian fusion models (Naive Bayes or Noise-Majority system).
+Within the scope of this challenge, one of the prominent machine learning approaches was use of a large feature set coupled with dimensionaltiy reduction techniques. 
+For instace, Kim et al. \cite{kim2012intelligibility} developed multiple expert subsystems on feature subsets, which were finally fused using Bayesian fusion models (Naive Bayes or Noise-Majority system).
 Lu et al. \cite{lu2012predicting} used sparse Gaussian process, Huang et al. ~\cite{huang2012detecting} used asymmetrical sparse partial least squares regression and Zhou et al. \cite{zhou2012automatic} applied a combination of LDA and PCA techniques.
-This challenge also lead to focus on design of neurophysiology, biophysics and psychoacoustics \cite{zhou2012automatic} inspired features in intelligibility assessment and Stark et al. \cite{stark2012interspeech} investigated the impact of speaker and sentence on intelligibility assesments probing questions related to generality versus specificity.
+On the other hand, some paper designed acoustic features inspired by neurophysiology, biophysics and psychoacoustics for intelligibility assessment \cite{zhou2012automatic}. 
+Finally, Stark et al. \cite{stark2012interspeech} investigated the impact of speaker and sentence on intelligibility assesments probing questions related to generality versus specificity.
 
-Overall, this challenge presented some unique data characteristics and reseachers presented novel methods answering some questions related to application of ML-SP tools towards understaning pathological speech.
-In the next section, we describe another interspeech challenge investigating the prediction of Parkinson's disease severity from speech. 
+Overall, this challenge presented some unique data characteristics and reseachers presented novel methods answering some questions related to application of ML-SP tools.
+In the next section, we describe another Interspeech challenge for automatic rating of Parkinson's disease severity from speech. 
 
 %This challenge also lead to the development of several ML-SP techniques addressing intellibility inference from speech cues.  
 %The winner of the challege~\cite{kim2012intelligibility} developed multiple expert subsystems which were fused for the final label by using Bayesian fusion models (Naive Bayes or Noise-Majority system).
@@ -179,36 +183,42 @@ In the next section, we describe another interspeech challenge investigating the
 %Specifically, incorporating feature selection~\cite{grosz2015assessing} or the information of (predicted) prompt type~\cite{kim2015automatic} into clustering process improved severity rating accuracy as well as clustering accuracy significantly.
 %
 
-Parkinson's disease is one of the most common neurological disorders.
-Effect of Parkinson's disease on speech has been discussed in several works \cite{lieberman1992speech,kempler2002effect}.
-The Parkinson's condition sub-challenge focused on predicting Parkinson's severity using speech cues.
-Note that this is different from the previous challenge in the sense that the previous challenge focuses on investigating the effect of pathological speech (intellibility) whereas this challenge focuses on the cause (Parkinson's). 
+Parkinson's disease is one of the most common neurological disorders and effect of Parkinson's disease on speech has been discussed in several works \cite{lieberman1992speech,kempler2002effect}.
+The Parkinson's condition sub-challenge at Interspeech 2015 focused on the development of automated rating system for Parkinson's severity using speech cues.
+This challenge is different from the previous challenge in the sense that the previous challenge focuses on the effect of pathological speech (intelligibility) whereas this challenge focuses on the cause (Parkinson's disease). 
 involved prediction of speech intelligibility caused by tumors.
-In this challenge, participant had to predict severity of cause given the speech.
-%In clinical practice, it is important to track the severity of its symptom.
-Using speech signal for monitoring the pregression of Parkinson's disease is an attractive approach, because it is non-invasive, fast, easy-to-obtain and cost-efficient as well as useful for speech treatment.
+Using speech signal for monitoring the progression of Parkinson's disease is an attractive approach, because it is non-invasive, fast, easy-to-obtain and cost-efficient as well as useful for speech therapy.
 %The task of the Parkinson's condition challenge in Interspeech 2015 was to develop an automatic system to predict the severity of Parkinson disease using a set of speech signals of the patients.
 
-The unique characteristic of the data set used in this challenge is that the training and testing partitions were recorded in dissimilar settings.
-This scenario is very realistic and calls for development of tecniques to allow propogation systems trained under controlled settings for broader use.
-Furthermore, the patients were to be evaluated based on five kinds of utterances: (i) reading single words, (ii) rapidly repeating syllables, (iii) reading sentences, (iv) reading a text, and (v) spontaneous speech.
-This setup makes possible the analysis of the impact of utterance type on diagnosis.
-Also, the evaluation of Parkinson's severity was made using the standard Unified Parkinson's Disease Rating Scale (UPDRS)~\cite{stebbins1998factor}.
-Availability of such carefully designed standards is crucial in training machine learning systems as they not only provide a ground truth for evaluation but also reduce ambiguity in definition of concept being addressed.
+The dataset of this challenge has several unique characteristics. 
+First, training and test set partitions were recorded in dissimilar environmental noise conditions.
+This scenario is very realistic and calls for development of noise robust systems for a broader use. 
+Second, each patient produced 42 speech utterances of five speaking tasks: (i) reading single words, (ii) rapidly repeating syllables, (iii) reading sentences, (iv) reading a text, and (v) speaking spontaneously.
+This setup allowed the analysis of the impact of utterance type on different kinds of acoustic atypicality.
+Finally, the evaluation of Parkinson's severity was made using the standard Unified Parkinson's Disease Rating Scale (UPDRS)~\cite{stebbins1998factor}.
+Availability of such carefully designed standards is crucial in training machine learning systems as they not only provide a ground truth for evaluation but also reduce ambiguity in problem definition while applying ML-SP techniques.
 
-A lot of researchers focused on designing features to capture the spectral and prosodic characteristics of speech in patients suffering from Parkinson's disease while reducing the impact of differences in recording conditions.
+In this challenge, a lot of researchers focused on designing features to capture the spectral and prosodic characteristics of speech, while reducing the impact of differences in recording conditions.
 %Various features on top of the standard baseline features extracted using openSMILE~\cite{eyben2010themunich} were tested for automatic severity rating.
 Foote el al. \cite{foote2002audio} and Jensen el al. \cite{jensen1999timbre} developed rhythmic features called beatspectrum and spectral irregularity, inspired from music information retrieval.
 Guenther el al. \cite{guenther2006neural} and Williamson et al. \cite{williamson2015segment} focused on identifying Parkinson's severity based on channel-delay correlation and covariance matrices on the speech waveform, delta-MFCCs and formants, and the articulatory feature streams predicted using the Directions into Velocities of Articulators (DIVA) model.
 Hahm et al. \cite{hahm2015parkinson} used an assembly of both acoustic and articulatory features to predict the UPDRS score.
-Kim et al. \cite{kim2015automatic} propsed an interesting approach by predicting UPDRS scores on various utterance types from each of the speakers and performing a fusion to predict a final score for the speaker.
+Kim et al. \cite{kim2015automatic} proposed an interesting approach to predict the UPDRS scores based on the five utterance types and performing a fusion to compute the final severity score for the speaker.
 
-In summary, this challenge alon with the Interspeech challenge 2012 provided an opportunity to investigate the cause and effect of pathological speech.
-The challenges presented various challenges to ML-SP researchers from accounting for speaker specificity to diversity in recoding conditions.
-In the next section, we present a summary of researhc on other mental health disorders causing pathological speech.
+In summary, this challenge along with the Interspeech challenge 2012 provided opportunities to investigate the cause and effect of pathological speech.
+Also, the challenges presented various challenges to ML-SP researchers from accounting for speaker specificity to diversity in recoding conditions.
+In the next section, we present a summary of research on other mental health disorders that cause pathological speech.
 
 \subsection{Pathological Speech in Developmental and Mental Health Disorders}
-Certain types of pathological speech can result from other disorders. For instance, autism spectrum disorder (ASD) is a prevalent neuro-cognitive developmental disorder (1 in 68 in the United States~\cite{}) that affects social-communicative aspects of speech and language throughout the lifetime~\cite{}. Speech pathologists play a critical role in both the assessment and treatment of ASD~\cite{pathologyWebsite}. In terms of acoustical analysis, speech scientists are focusing on speech prosody--the rhythm, stress, and intonation of speech--as a prime means for translational impact. This is because, although speech prosody is commonly referred to as 'atypical' in autism, it is not currently utilized in the ``gold-standard'' diagnostic instrument, the Autism Diagnostic Observation Schedule (ADOS)~\cite{ADOS2002}. Interestingly, speech scientists may be able to develop computational models of `typical' prosody in order to infer 'atypical' prosody, particularly those that are knowledge-driven; this effort is in contrast to much of the present pathological speech computational methods which attempt to predict a gold-standard ground-truth. For instance, Bone et al. (2014) investigated prosodic cues of children with autism (and the interacting psychologist), finding interpretable acoustic measures that corroborate previous qualitative perceptions through correlational analysis and linear-regression prediction with ASD-severity~\cite{}. However, noting that not all individuals with autism will have a prosodic deficit, Bone et al. (2015) also incorporated global human judgements of prosodic `awkwardness'~\cite{}. Thus, we see in this case example that providing a computational measure which does not currently have an established ground truth can be quite challenging, but also could be of high-value to the target domain.
+Certain types of pathological speech can result from other disorders. 
+For instance, autism spectrum disorder (ASD) is a prevalent neuro-cognitive developmental disorder (1 in 68 in the United States~\cite{}) that affects social-communicative aspects of speech and language throughout the lifetime~\cite{}. 
+Speech pathologists play a critical role in both the assessment and treatment of ASD~\cite{pathologyWebsite}. 
+In terms of acoustical analysis, speech scientists are focusing on speech prosody--the rhythm, stress, and intonation of speech--as a prime means for translational impact. 
+This is because, although speech prosody is commonly referred to as 'atypical' in autism, it is not currently utilized in the ``gold-standard'' diagnostic instrument, the Autism Diagnostic Observation Schedule (ADOS)~\cite{ADOS2002}. 
+Interestingly, speech scientists may be able to develop computational models of `typical' prosody in order to infer 'atypical' prosody, particularly those that are knowledge-driven; this effort is in contrast to much of the present pathological speech computational methods which attempt to predict a gold-standard ground-truth. 
+For instance, Bone et al. (2014) investigated prosodic cues of children with autism (and the interacting psychologist), finding interpretable acoustic measures that corroborate previous qualitative perceptions through correlational analysis and linear-regression prediction with ASD-severity~\cite{}. 
+However, noting that not all individuals with autism will have a prosodic deficit, Bone et al. (2015) also incorporated global human judgements of prosodic `awkwardness'~\cite{}. 
+Thus, we see in this case example that providing a computational measure which does not currently have an established ground truth can be quite challenging, but also could be of high-value to the target domain.
 
 these fields can have a symbiotic relationship, with each learning from the other
 
