@@ -3,7 +3,7 @@
 %          IEEEbib.bst - IEEE bibliography style file.
 % --------------------------------------------------------------------------
 \documentclass{article}
-\usepackage{spconf,amsmath,graphicx,bm}
+\usepackage{spconf,amsmath,graphicx,bm,setspace}
 \usepackage{todonotes}
 \setlength{\marginparwidth}{1.5cm}
 
@@ -181,7 +181,7 @@ Another intersting aspect of the data is that the data contains speech audio of 
 The nativeness of a speaker affects the intelligibility of the speech sound as well \cite{van2001intelligibility}, hence it is important to segregate the impact of the disease and the treatment v.s. the nativeness of the speaker on the speech intelligibility.
 
 Within the scope of this challenge, one of the prominent machine learning approaches was use of a large feature set coupled with dimensionaltiy reduction techniques. 
-For instace, Kim et al. \cite{kim2012intelligibility} developed multiple expert subsystems on feature subsets, which were finally fused using Bayesian fusion models (Naive Bayes or Noise-Majority system).
+For instace, Kim et al. \cite{kim2013pathology} developed multiple expert subsystems on feature subsets, which were finally fused using Bayesian fusion models (Naive Bayes or Noise-Majority system).
 Lu et al. \cite{lu2012predicting} used sparse Gaussian process, Huang et al. ~\cite{huang2012detecting} used asymmetrical sparse partial least squares regression and Zhou et al. \cite{zhou2012automatic} applied a combination of LDA and PCA techniques.
 On the other hand, some paper designed acoustic features inspired by neurophysiology, biophysics and psychoacoustics for intelligibility assessment \cite{zhou2012automatic}. 
 Finally, Stark et al. \cite{stark2012interspeech} investigated the impact of speaker and sentence on intelligibility assesments probing questions related to generality versus specificity.
@@ -264,15 +264,14 @@ It is encouraging to see the vast amount of attention that pathological speech p
 Our assesment is that the application of ML-SP to speech pathology is in an early stage and will only increase with time.
 As all speech pathology, signal processing and machine learing are evolving domains, we anticipate that a continued collaboration between researchers in these fields will be mutually beneficial.
 
- 
-
+\begin{spacing}{.84}
 \vfill\pagebreak
 
 
 % BiBTeX files (here: strings, refs, manuals). The IEEEbib.bst bibliography
 % style file from IEEE produces unsorted bibliography list.
 % -------------------------------------------------------------------------
-\bibliographystyle{IEEEbib}
+\bibliographystyle{IEEEbib2}
 \bibliography{strings,refs}
-
+\end{spacing}
 \end{document}
