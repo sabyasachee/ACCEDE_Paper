@@ -6,6 +6,15 @@
 \usepackage{spconf,amsmath,graphicx,bm,setspace}
 \usepackage{todonotes}
 \setlength{\marginparwidth}{1.5cm}
+\usepackage{lipsum}
+
+% ADD THE FOLLOWING COUPLE LINES INTO YOUR PREAMBLE
+\let\OLDthebibliography\thebibliography
+\renewcommand\thebibliography[1]{
+  \OLDthebibliography{#1}
+  \setlength{\parskip}{0pt}
+  \setlength{\itemsep}{0pt plus 0.3ex}
+}
 
 % Example definitions.
 % --------------------
@@ -252,7 +261,6 @@ As all speech pathology, signal processing and machine learning are evolving dom
 
 \begin{spacing}{.84}
 %\vfill\pagebreak
-
 % BiBTeX files (here: strings, refs, manuals). The IEEEbib.bst bibliography
 % style file from IEEE produces unsorted bibliography list.
 % -------------------------------------------------------------------------
