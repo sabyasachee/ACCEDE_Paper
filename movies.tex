@@ -1,0 +1,85 @@
+% Template for ICASSP-2013 paper; to be used with:
+%          spconf.sty  - ICASSP/ICIP LaTeX style file, and
+%          IEEEbib.bst - IEEE bibliography style file.
+% --------------------------------------------------------------------------
+\documentclass{article}
+\usepackage{spconf,amsmath,graphicx,bm,setspace}
+\usepackage{todonotes}
+\setlength{\marginparwidth}{1.5cm}
+\usepackage{lipsum}
+
+% ADD THE FOLLOWING COUPLE LINES INTO YOUR PREAMBLE
+\let\OLDthebibliography\thebibliography
+\renewcommand\thebibliography[1]{
+  \OLDthebibliography{#1}
+  \setlength{\parskip}{0pt}
+  \setlength{\itemsep}{0pt plus 0.3ex}
+}
+
+% Example definitions.
+% --------------------
+\def\x{{\mathbf x}}
+\def\L{{\cal L}}
+
+% Title.
+% ------
+\title{Pathological Speech Processing:\\State-of-the-Art, Current Challenges, and Future Directions}
+%
+% Single address.
+% ---------------
+\name{Rahul Gupta, Theodora Chaspari, Jangwon Kim, Naveen Kumar, Daniel Bone, Shrikanth Narayanan}
+\address{Signal Analysis and Interpretation Lab,
+        University of Southern California,  
+  Los Angeles, CA, USA}  
+\begin{document}
+\ninept
+%
+\maketitle
+%
+\begin{abstract}
+   Put abstract here 
+ 
+\end{abstract}
+%
+\begin{keywords}
+Pathological speech disorders, machine learning, signal processing 
+\end{keywords}
+%
+\section{Introduction}
+\label{sec:intro}
+Put intro here
+
+\section{Background}
+Put background here
+
+\section{Dataset}
+
+\section{Methodology}
+Baseline + knowledge transfer + grad boost
+
+\subsection{Baseline}
+LR + ridge + NN
+
+\subsection{Proposed method}
+
+\subsubsection{Knowlege transfer}
+
+\subsubsection{Gradient boosting}
+
+\section{Results}
+
+\subsection{Discussion}
+
+\section{Conclusion}
+
+\footnotesize{
+\begin{spacing}{.85 }
+%\vfill\pagebreak
+% BiBTeX files (here: strings, refs, manuals). The IEEEbib.bst bibliography
+% style file from IEEE produces unsorted bibliography list.
+% -------------------------------------------------------------------------
+\bibliographystyle{IEEEbib2}
+\bibliography{strings,refs}
+\end{spacing}
+}
+\end{document}
