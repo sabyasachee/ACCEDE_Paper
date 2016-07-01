@@ -62,6 +62,31 @@ The data is taken from the LIRIS-ACCEDE(Annotated Creative Commons Emotional Dat
 
 \subsection{Baseline}
 LR + ridge + NN
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+            & Linear\_50 & Linear\_1404 & Ridge\_50 & Ridge\_1404 & NN\_50 \\ \hline
+RMSE        & 0.346      & 0.344        & 0.347     & 0.344       & 0.368  \\ \hline
+Correlation & 0.078      & 0.144        & 0.063     & 0.122       & -0.329 \\ \hline
+CCC         & 0.021      & 0.058        & 0.018     & 0.039       & -0.105 \\ \hline
+\end{tabular}
+\caption{Baseline for valence with Linear, Ridge and Neural Network. The suffix number indicates the number of features used.}
+\label{my-label}
+\end{table}
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|}
+\hline
+            & Linear\_50 & Linear\_1404 & Ridge\_50 & Ridge\_1404 & NN\_50 \\ \hline
+RMSE        & 0.279      & 0.286        & 0.28      & 0.288       & 0.294  \\ \hline
+Correlation & 0.29       & 0.171        & 0.292     & 0.141       & -0.019 \\ \hline
+CCC         & 0.096      & 0.064        & 0.091     & 0.03        & -0.005 \\ \hline
+\end{tabular}
+\caption{Baseline for arousal with Linear, Ridge and Neural Network. The suffix number indicates the number of features used.}
+\label{my-label}
+\end{table}
 
 \subsection{Proposed method}
 
