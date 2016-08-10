@@ -1,4 +1,4 @@
-% Template for ICASSP-2013 paper; to be used with:
+% Template for ICASSP-2016 paper; to be used with:
 %          spconf.sty  - ICASSP/ICIP LaTeX style file, and
 %          IEEEbib.bst - IEEE bibliography style file.
 % --------------------------------------------------------------------------
@@ -7,6 +7,8 @@
 \usepackage{todonotes}
 \setlength{\marginparwidth}{1.5cm}
 \usepackage{lipsum}
+\usepackage{graphicx}
+\graphicspath{{images/}}
 
 % ADD THE FOLLOWING COUPLE LINES INTO YOUR PREAMBLE
 \let\OLDthebibliography\thebibliography
@@ -23,11 +25,11 @@
 
 % Title.
 % ------
-\title{Pathological Speech Processing:\\State-of-the-Art, Current Challenges, and Future Directions}
+\title{Knowledge Transfer and Boosting Approach to \\Prediction of Affective Dimensions in Movies}
 %
 % Single address.
 % ---------------
-\name{Rahul Gupta, Theodora Chaspari, Jangwon Kim, Naveen Kumar, Daniel Bone, Shrikanth Narayanan}
+\name{Rahul Gupta, Shrikanth Narayanan, Sabyasachee Baruah}
 \address{Signal Analysis and Interpretation Lab,
         University of Southern California,  
   Los Angeles, CA, USA}  
@@ -42,7 +44,7 @@
 \end{abstract}
 %
 \begin{keywords}
-Pathological speech disorders, machine learning, signal processing 
+Gradient Boosting, Knowledge Transfer, Valence, Arousal
 \end{keywords}
 %
 \section{Introduction}
@@ -53,58 +55,90 @@ Put intro here
 Put background here
 
 \section{Dataset}
-The data is taken from the LIRIS-ACCEDE(Annotated Creative Commons Emotional DatabaseE for affective video content analysis) database \cite{baveye2015liris} presented in the 2016 MediaEval Emotional Impact of Movies Task. It consists of two parts. The first part has 9800 video clips of length between 8 to 12 seconds taken from 160 movies. Each video has a single global valence and arousal rating in the range 1 to 5, annotated by 1517 annotators from 89 different countries using crowdsourcing. The second part has 30 short films of length varying from 3 to 28 minutes, each with a valence and arousal label in the range -1 to 1, for every second annotated by 10 participants.
+The data is taken from the LIRIS-ACCEDE(Annotated Creative Commons Emotional DatabaseE for affective video content analysis) database \cite{baveye2015liris} presented in the 2016 MediaEval Emotional Impact of Movies Task. The dataset contains 30 short films of length varying from 3 to 28 minutes, each with a valence and arousal label in the range -1 to 1 for every second, annotated by 10 participants.
+% It consists of two parts. The first part has 9800 video clips of length between 8 to 12 seconds taken from 160 movies. Each video has a single global valence and arousal rating in the range 1 to 5, annotated by 1517 annotators from 89 different countries using crowdsourcing. 
 
-\indent We use a variety of visual, speech and music features for training our model. The same features are extracted for both the video clips and the short films. The visual features are luminance, intensity and optical flow. The speech features are mel-frequency cepstral coefficients, voice probability, zero crossing rate, harmonic to noise ratio, fundamental frequency and logarithm of energy. We also include the first and second derivative, and the arithmic mean and standard deviation of the countour of the signal for every speech feature. Lastly we compute 12 semitones for our musical chroma features. We have used the OpenSMILE toolbox for feature extraction. A total of 9 statistics - mean, median, standard deviation, kurtosis, lower and upper quartile, minimum, maximum and range are computed for every feature. For the short films, we choose a 10 second window for calculating our statistics because it is the mean duration of the video clips. In total we have 156 visual, speech and musical features, each with nine statistics, making a total of 1404 features.
+\indent  A variety of visual, speech and music features are used for training our model. The visual features used are luminance, intensity and optical flow. The speech features are mel-frequency cepstral coefficients, voice probability, zero crossing rate, harmonic to noise ratio, fundamental frequency and energy logarithm. We also include the first and second derivative, and the arithmic mean and standard deviation of the countour of the signal for every speech feature. Lastly we compute 12 semitones for our musical chroma features. We have used the OpenSMILE toolbox for feature extraction. A total of 9 statistics - mean, median, standard deviation, kurtosis, lower and upper quartile, minimum, maximum and range are computed for every feature. We choose a 10 second wide sliding window for calculating our statistics. In total we have 156 visual, speech and musical features, each with nine statistics, thus ending up with a dimension of 1404 for our feature matrix.
 
 \section{Methodology}
 
 
 \subsection{Baseline}
-LR + ridge + NN
+The features and annotations are available at different time frequencies. The video and audio features have been extracted at a rate of 30 and 100 values per second respectively, whereas the ground truth is annotated for each second. To align both these sequences together, we calculate the aforementioned nine statistics over a sliding window on the feature array and assign the computed feature vector of dimension 1404 to the time second at the center of the window. Concordance correlation coefficient is employed as the evaluation metric. We observe the variation in performance for different models on baseline performance as shown in tables \ref{Valence_table} and \ref{Arousal_table}. 
 
-\begin{table}[]
+
+\begin{table}[h]
 \centering
 \begin{tabular}{|l|l|l|l|}
 \hline
-					& RMSE		& Correlation 	& CCC 	 \\ \hline
-Linear\_50			& 0.346		& 0.078			& 0.021  \\ \hline	
-Linear\_1404		& 0.344		& 0.144 		& 0.058	 \\ \hline
-Ridge\_50			& 0.347 	& 0.063			& 0.018	 \\ \hline
-Ridge\_1404			& 0.344		& 0.122			& 0.039	 \\ \hline
-NN\_50				& 0.368		& -0.329		& -0.105 \\ \hline
+						& RMSE		& Correlation 	& CCC 	 \\ \hline
+Linear 					& 0.344		& 0.143		& 0.058  \\ \hline	
+Linear (feature selection)		& 0.339		& 0.200 		& 0.075	 \\ \hline
+Ridge					& 0.344 		& 0.122		& 0.039	 \\ \hline
+Ridge (feature selection)		& 0.344		& 0.121		& 0.044	 \\ \hline
+NN						& 0.330		& .363		& 0.116 \\ \hline
 & & & \\ \hline
-Knowledge transfer 	& 0.336		& 0.515			& 0.091	 \\ \hline
-Gradient boosting 	& 0.332 	& 0.301 		& 0.108  \\ \hline
+Knowledge transfer 		& 0.331		& 0.295		& \textbf{0.128}	 \\ \hline
+Gradient boosting 			& 0.342 		& 0.208 		& \textbf{0.128}  \\ \hline
 \end{tabular}
-\caption{Results for Valence. The suffix number indicates the number of features used.}
+\caption{Results for Valence. The bold numbers shows the improvement.}
 \label{Valence_table}
 \end{table}
 
-\begin{table}[]
+\begin{table}[h]
 \centering
 \begin{tabular}{|l|l|l|l|}
 \hline
-					& RMSE		& Correlation 	& CCC 	 \\ \hline
-Linear\_50			& 0.279		& 0.29			& 0.096  \\ \hline	
-Linear\_1404		& 0.286		& 0.171 		& 0.064	 \\ \hline
-Ridge\_50			& 0.28  	& 0.292			& 0.091	 \\ \hline
-Ridge\_1404			& 0.288		& 0.141			& 0.03	 \\ \hline
-NN\_50				& 0.294		& -0.019		& -0.005 \\ \hline
+						& RMSE		& Correlation 	& CCC 	 \\ \hline
+Linear					& 0.286		& 0.171		& 0.064  \\ \hline	
+Linear (feature selection)		& 0.278		& 0.305 		& 0.113	 \\ \hline
+Ridge					& 0.288  		& 0.141		& 0.030	 \\ \hline
+Ridge (feature selection)		& 0.279		& 0.293		& 0.097	 \\ \hline
+NN						& 0.296		& 0.092		& 0.023 \\ \hline
 & & & \\ \hline
-Knowledge transfer 	& 0.44		& 0.213 		& 0.071	 \\ \hline
-Gradient boosting 	& 0.273 	& 0.342 		& 0.242  \\ \hline
+Knowledge transfer 		& 0.299		& 0.249 		& \textbf{0.221}	 \\ \hline
+Gradient boosting 			& 0.277 		& 0.334 		& \textbf{0.270}  \\ \hline
 \end{tabular}
-\caption{Results for Arousal. The suffix number indicates the number of features used.}
-\label{Valence_table}
+\caption{Results for Arousal. The bold numbers shows the improvement.}
+\label{Arousal_table}
 \end{table}
 
+\indent Farther analysis of the performance of the baseline models shows the variation in performance across the movies, as shown in figure. The movies in our dataset span a wide variety of genres (figure) and enough training data is not available for each type of movie. One of the examples is the film, \textit{To Claire From Sonny}, which is the only romantic movie in the dataset and thus doesn't match any of the movies in the training set in genre, leading to inaccurate predictions of valence and arousal (shown in the figure). To overcome this problem we require a much larger dataset that should have enough variation to be representative of the different genres of the LIRIS-ACCEDE dataset, but should also be compatible so that the knowledge gathered (trained model) can be used to predict the affective labels in the original dataset.
+
+\indent To this affect we make use of the Discrete LIRIS-ACCEDE dataset. It contains 9800 short video clips of length 8-12 seconds. The ground truth consists of a single global valence and arousal label, unlike the previous dataset, in the range 1 to 5. The differences are shown in table \ref{differences}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|p{2.2cm}|p{2.2cm}|}
+\hline
+				& Continuous LIRIS-ACCEDE	& Discrete LIRIS-ACCEDE \\ \hline
+Duration			& 3 - 28 minutes			& 8 - 12 seconds		\\ \hline	
+Global/Continuous	& Continuous				& Global 				\\ \hline
+Range			& -1 to 1					& 1 to 5				\\ \hline
+\end{tabular}
+\caption{Differences between Continuous LIRIS-ACCEDE and Discrete LIRIS-ACCEDE.}
+\label{differences}
+\end{table}
 
 \subsection{Proposed method}
 
 \subsubsection{Knowlege transfer}
 
 \subsubsection{Gradient boosting}
+
+%\begin{figure}[h]
+%	\includegraphics[width=8cm]{performance.jpg}
+%	\centering
+%	\caption{Performance of different models, knowledge transfer and gradient boosting on valence and arousal prediction}
+%	\label{fig:performance}
+%\end{figure}
+
+%\begin{figure}[h]
+%	\includegraphics[width=18cm]{comparison.jpg}
+%	\centering
+%	\caption{Performance of Baseline and Boosting across movies}
+%	\label{comparison}
+%\end{figure}
 
 \section{Results}
 
