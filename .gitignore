@@ -5,3 +5,5 @@
 *.dvi
 *.log
 *.pdf
+.DS_Store
+movies.synctex.gz
