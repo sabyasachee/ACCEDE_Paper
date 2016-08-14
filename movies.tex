@@ -65,7 +65,7 @@ The data is taken from the LIRIS-ACCEDE(Annotated Creative Commons Emotional Dat
 \subsection{Baseline}
 The features and annotations are available at different time frequencies. The video and audio features have been extracted at a rate of 30 and 100 values per second respectively, whereas the ground truth is annotated for each second. To align both these sequences together, we calculate the aforementioned nine statistics over a sliding window on the feature array and assign the computed feature vector of dimension 1404 to the time second at the center of the window. Concordance correlation coefficient is employed as the evaluation metric. We observe the variation in performance for different models on baseline performance as shown in tables \ref{Valence_table} and \ref{Arousal_table}. 
 
-\indent Farther analysis of the performance of the baseline models shows the variation in performance across the movies, as shown in figure. The movies in our dataset span a wide variety of genres (figure) and enough training data is not available for each type of movie. One of the examples is the film, \textit{To Claire From Sonny}, which is the only romantic movie in the dataset and thus doesn't match any of the movies in the training set in genre, leading to inaccurate predictions of valence and arousal (shown in the figure). To overcome this problem we require a much larger dataset that should have enough variation to be representative of the different genres of the LIRIS-ACCEDE dataset, but should also be compatible so that the knowledge gathered (trained model) can be used to predict the affective labels in the original dataset.
+\indent Farther analysis of the performance of the baseline models shows the variation in performance across the movies, as shown in figure \ref{comparison}. The movies in our dataset span a wide variety of genres (figure \ref{genre}) and enough training data is not available for each type of movie. One of the examples is the film, \textit{To Claire From Sonny}, which is the only romantic movie in the dataset and thus doesn't match any of the movies in the training set in genre, leading to inaccurate predictions of valence and arousal (shown in the figure \ref{comparison}). To overcome this problem we require a much larger dataset that should have enough variation to be representative of the different genres of the LIRIS-ACCEDE dataset, but should also be compatible so that the knowledge gathered (trained model) can be used to predict the affective labels in the original dataset.
 
 \indent To this affect we make use of the Discrete LIRIS-ACCEDE dataset. It contains 9800 short video clips of length 8-12 seconds. The clips have been taken from 160 movies. The ground truth consists of a single global valence and arousal label, unlike the previous dataset, in the range 1 to 5, annotated by 1517 annotators from 89 different countries using crowdsourcing. The differences are shown in table \ref{differences}.
 
@@ -93,8 +93,7 @@ We have used the knowledge gathered from the videos of Discrete LIRIS-ACCEDE to 
 We calculate the pseudo-residual error, the difference of the predictions of knowledge transfer and the ground truth. This difference sequence becomes our new target and we train a model on the feature matrix of the movies to predict it. To account for the effect of history on the current annotation of valence and arousal, we shift our feature matrix forward in time relative to the target vector. The delay is found out by maximising mutual information between the shifted feature matrix and target vector. We additionally apply a smooting average filter on our predictions to subtract any noise present in the movie features. We add our predictions of the pseudo-residual error to the output of knowledge transfer to get our new predictions. This process is repeated again until we no longer see an improvement in performance.
 
 \section{Results}
-The performance of the baseline models, knowledge transfer and gradient boosting are shown in tables \ref{Valence_table} and \ref{Arousal_table}. We can observe the improvement in performance of 
-
+The performance of the baseline models, knowledge transfer and gradient boosting are shown in tables \ref{Valence_table} and \ref{Arousal_table}. Figure \ref{comparison} compares the performance of baseline models and gradient boosting technique, in both valence and arousal, across the 30 movies of the LIRIS-ACCEDE dataset. \textit{To Claire From Sonny} is a movie from the dataset and has been labelled in the figure. Figure \ref{genre} shows the distribution of genres in the same dataset.
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|l|l|l|}
@@ -131,14 +130,25 @@ Gradient boosting 			& 0.277 		& 0.334 		& \textbf{0.270}  \\ \hline
 \label{Arousal_table}
 \end{table}
 
+\begin{figure}[h]
+\includegraphics[width=10cm]{genre}
+\centering
+\caption{Distribution of genre in LIRIS-ACCEDE Dataset}
+\label{genre}
+\end{figure}
+
 \begin{figure*}[h]
 \includegraphics[width=\textwidth, height = 8cm]{comparison}
 \centering
+\caption{Performance of Baseline models and Gradient Boosting method across the 30 movies}
+\label{comparison}
 \end{figure*}
 
 \subsection{Discussion}
+We can observe the improvement in performance of Knowledge Transfer and Gradient Boosting compared to the baseline models. There is no significant improvement for Gradient Boosting over Knowledge Transfer for valence prediction. When we analyze the performance farther across the movies, we observe a more consistent performance for both valence and arousal for gradient boosting compared to baseline. The case of the movie \textit{To Claire From Sonny} has already been discussed, and we can see the improvent in CCC after gradient boosting.
 
 \section{Conclusion}
+
 
 \footnotesize{
 \begin{spacing}{.85 }
