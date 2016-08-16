@@ -49,10 +49,9 @@ Gradient Boosting, Knowledge Transfer, Valence, Arousal
 %
 \section{Introduction}
 \label{sec:intro}
-Put intro here
 
 \section{Background}
-Put background here
+
 
 \section{Dataset}
 The data is taken from the LIRIS-ACCEDE(Annotated Creative Commons Emotional DatabaseE for affective video content analysis) database \cite{baveye2015liris} presented in the 2016 MediaEval Emotional Impact of Movies Task. The dataset contains 30 short films of length varying from 3 to 28 minutes, each with a valence and arousal label in the range -1 to 1 for every second, annotated by 10 participants.
@@ -145,10 +144,10 @@ Gradient boosting 			& 0.277 		& 0.334 		& \textbf{0.270}  \\ \hline
 \end{figure*}
 
 \subsection{Discussion}
-We can observe the improvement in performance of Knowledge Transfer and Gradient Boosting compared to the baseline models. There is no significant improvement for Gradient Boosting over Knowledge Transfer for valence prediction. When we analyze the performance farther across the movies, we observe a more consistent performance for both valence and arousal for gradient boosting compared to baseline. The case of the movie \textit{To Claire From Sonny} has already been discussed, and we can see the improvent in CCC after gradient boosting.
+We can observe the improvement in performance of Knowledge Transfer and Gradient Boosting compared to the baseline models. Among the baseline models, we observe that the linear models perform best for arousal, whereas neural networks show the best performance in valence prediction. There is no significant improvement for Gradient Boosting over Knowledge Transfer for valence prediction. When we analyze the performance farther across the movies, we observe a more consistent performance for both valence and arousal for gradient boosting compared to baseline. The case of the movie \textit{To Claire From Sonny} has already been discussed, and we can see the improvent in CCC after gradient boosting.
 
 \section{Conclusion}
-
+Knowledge Transfer from a larger and more varied dataset not only improves performance, but also results in more consistent CCC values for different movies. We have used root mean squared error as a proxy for the evaluation of pseudo-residual error for now. We endeavour to use CCC instead in the farther work. 
 
 \footnotesize{
 \begin{spacing}{.85 }
