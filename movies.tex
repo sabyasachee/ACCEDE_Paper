@@ -119,6 +119,8 @@ In the next section, we describe the baseline models.
 
 %To this affect we make use of the Discrete LIRIS-ACCEDE dataset. It contains 9800 short video clips of length 8-12 seconds. The clips have been taken from 160 movies. The ground truth consists of a single global valence and arousal label, unlike the previous dataset, in the range 1 to 5, annotated by 1517 annotators from 89 different countries using crowdsourcing. The differences are shown in table \ref{differences}.
 
+\indent Farther analysis of the performance of the baseline models shows the variation in performance across the movies, as shown in figure \ref{comparison}. The movies in our dataset span a wide variety of genres (figure \ref{genre}) and enough training data is not available for each type of movie. One of the examples is the film, \textit{To Claire From Sonny}, which is the only romantic movie in the dataset and thus doesn't match any of the movies in the training set in genre, leading to inaccurate predictions of valence and arousal (shown in the figure \ref{comparison}). To overcome this problem we require a much larger dataset that should have enough variation to be representative of the different genres of the LIRIS-ACCEDE dataset, but should also be compatible so that the knowledge gathered (trained model) can be used to predict the affective labels in the original dataset.
+
 We use a set of three regressors (linear regression, ridge regression and neural network) to predict the affect ratings from the features. 
 Linear regression \cite{} is the simplest of the three regressors and linearly maps the features to the affect ratings.
 Like linear regression, ridge regression \cite{} also performs a linear mapping.
@@ -202,6 +204,7 @@ We refer the reader to \cite{} for the details of gradient boosting in minimizin
 \subsubsection{Gradient boosting algorithm for affect prediction}
 
 \section{Results}
+<<<<<<< HEAD
 The performance of the baseline models, knowledge transfer and gradient boosting are shown in tables \ref{Valence_table} and \ref{Arousal_table}. We can observe the improvement in performance of 
 
 \subsection{Discussion}
@@ -243,6 +246,10 @@ The performance of the baseline models, knowledge transfer and gradient boosting
 %\end{table}
 
 \begin{table}[t]
+=======
+The performance of the baseline models, knowledge transfer and gradient boosting are shown in tables \ref{Valence_table} and \ref{Arousal_table}. Figure \ref{comparison} compares the performance of baseline models and gradient boosting technique, in both valence and arousal, across the 30 movies of the LIRIS-ACCEDE dataset. \textit{To Claire From Sonny} is a movie from the dataset and has been labelled in the figure. Figure \ref{genre} shows the distribution of genres in the same dataset.
+\begin{table}[h]
+>>>>>>> 66ece5fbee370c6b66fc599e733698f078889a26
 \centering
 \caption{Results for affect prediction using the baseline regressors. The best performances for each dimension are shown in bold. {\bf Make everything having 2 significant digits}}
 \begin{tabular}{@{}l|l|l@{}}
@@ -267,7 +274,25 @@ Gradient boosting& 0.128/ 0.208/ 0.342 & 0.270/ 0.334/ 0.277 \\
 \label{Arousal_table}
 \end{table}
 
+\begin{figure}[h]
+\includegraphics[width=10cm]{genre}
+\centering
+\caption{Distribution of genre in LIRIS-ACCEDE Dataset}
+\label{genre}
+\end{figure}
+
+\begin{figure*}[h]
+\includegraphics[width=\textwidth, height = 8cm]{comparison}
+\centering
+\caption{Performance of Baseline models and Gradient Boosting method across the 30 movies}
+\label{comparison}
+\end{figure*}
+
+\subsection{Discussion}
+We can observe the improvement in performance of Knowledge Transfer and Gradient Boosting compared to the baseline models. There is no significant improvement for Gradient Boosting over Knowledge Transfer for valence prediction. When we analyze the performance farther across the movies, we observe a more consistent performance for both valence and arousal for gradient boosting compared to baseline. The case of the movie \textit{To Claire From Sonny} has already been discussed, and we can see the improvent in CCC after gradient boosting.
+
 \section{Conclusion}
+
 
 \footnotesize{
 \begin{spacing}{.85 }
