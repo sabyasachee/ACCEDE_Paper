@@ -64,7 +64,7 @@ In the next section, we describe the features used in our experiments.
 
 \subsection{Feature extraction}
 We use an assembly of visual, speech and music features to train our models.
-Table \ref{} shows the list of features along with their frame rate and toolbox used. 
+Table \ref{table:features} shows the list of features along with their frame rate and toolbox used. 
 Note that the frame rates of features from different sources are different.
 In order to synchronize the features with the annotations, we extract statistics on the features along a temporal window with a shift of 1 second. 
 We extract a set of nine statistics (mean, median, standard deviation, kurtosis, lower and upper quartile, minimum, maximum and range) for every feature. 
@@ -85,16 +85,16 @@ Audio & Mel-frequency cepstral coefficients,& & \\
 Music & Chroma features (12 semitones) & & \\ 
 \end{tabular}
 \caption{List of features}
-\label{differences}
+\label{table:features}
 \end{table}
 
 
-\begin{figure}[t]
-\centering
-\includegraphics [trim=0cm 10cm 3cm 0cm,clip=true,scale=.355] {images/features_fig.pdf} 
-\caption{}
-\label{back_fig}
-\end{figure}
+%\begin{figure}[t]
+%\centering
+%\includegraphics [trim=0cm 10cm 3cm 0cm,clip=true,scale=.355] {images/features_fig.pdf} 
+%\caption{}
+%\label{back_fig}
+%\end{figure}
 
 
 %\indent  A variety of visual, speech and music features are used for training our model. The visual features used are luminance, intensity and optical flow. The speech features are mel-frequency cepstral coefficients, voice probability, zero crossing rate, harmonic to noise ratio, fundamental frequency and energy logarithm. We also include the first and second derivative, and the arithmic mean and standard deviation of the countour of the signal for every speech feature. Lastly we compute 12 semitones for our musical chroma features. We have used the OpenSMILE toolbox for feature extraction. A total of 9 statistics - mean, median, standard deviation, kurtosis, lower and upper quartile, minimum, maximum and range are computed for every feature. We choose a 10 second wide sliding window for calculating our statistics. In total we have 156 visual, speech and musical features, each with nine statistics, thus ending up with a dimension of 1404 for our feature matrix.
@@ -104,10 +104,10 @@ Music & Chroma features (12 semitones) & & \\
 We test several regression schemes to predict the continuos valence and affect ratings from the features described in the last section.
 Initially, we establish a baseline using multiple regressors.
 We discuss the performance of the baseline models and motivate our knowledge transfer and gradient boosting based method.
-All our experiments are performed by using a leave cross-validation scheme.
-During cross-validation, we use x movies as the training set, x for validation and 1 movie as the testing set.
-The primary metric for the evalauation of our methods is Canonical Correlation Coefficient (CCC) \cite{} between the annotated ground truth and the predicted ratings on the test set.
-This metric accounts for both the similarity of pattern between the two time series as well as the differnce of bias between them. 
+All our experiments are performed by using a leave one out cross-validation scheme.
+During cross-validation, we use 25 movies as the training set, 4 for validation and 1 movie as the testing set.
+The primary metric for the evalauation of our methods is Concordance Correlation Coefficient (CCC) \cite{} between the annotated ground truth and the predicted ratings on the test set.
+This metric accounts for both the similarity of pattern between the two time series as well as the difference of bias between them. 
 Along with this, we also report the correlation coefficient and the Root Mean Square Error (RMSE) between the predicted and the true ratings.
 In the next section, we describe the baseline models.
 
@@ -118,7 +118,7 @@ In the next section, we describe the baseline models.
 
 %To this affect we make use of the Discrete LIRIS-ACCEDE dataset. It contains 9800 short video clips of length 8-12 seconds. The clips have been taken from 160 movies. The ground truth consists of a single global valence and arousal label, unlike the previous dataset, in the range 1 to 5, annotated by 1517 annotators from 89 different countries using crowdsourcing. The differences are shown in table \ref{differences}.
 
-\indent Farther analysis of the performance of the baseline models shows the variation in performance across the movies, as shown in figure \ref{comparison}. The movies in our dataset span a wide variety of genres (figure \ref{genre}) and enough training data is not available for each type of movie. One of the examples is the film, \textit{To Claire From Sonny}, which is the only romantic movie in the dataset and thus doesn't match any of the movies in the training set in genre, leading to inaccurate predictions of valence and arousal (shown in the figure \ref{comparison}). To overcome this problem we require a much larger dataset that should have enough variation to be representative of the different genres of the LIRIS-ACCEDE dataset, but should also be compatible so that the knowledge gathered (trained model) can be used to predict the affective labels in the original dataset.
+%\indent Farther analysis of the performance of the baseline models shows the variation in performance across the movies, as shown in figure \ref{comparison}. The movies in our dataset span a wide variety of genres (figure \ref{genre}) and enough training data is not available for each type of movie. One of the examples is the film, \textit{To Claire From Sonny}, which is the only romantic movie in the dataset and thus doesn't match any of the movies in the training set in genre, leading to inaccurate predictions of valence and arousal (shown in the figure \ref{comparison}). To overcome this problem we require a much larger dataset that should have enough variation to be representative of the different genres of the LIRIS-ACCEDE dataset, but should also be compatible so that the knowledge gathered (trained model) can be used to predict the affective labels in the original dataset.
 
 We use a set of three regressors (linear regression, ridge regression and neural network) to predict the affect ratings from the features. 
 Linear regression \cite{} is the simplest of the three regressors and linearly maps the features to the affect ratings.
@@ -203,10 +203,10 @@ We refer the reader to \cite{} for the details of gradient boosting in minimizin
 \subsubsection{Gradient boosting algorithm for affect prediction}
 
 \section{Results}
-<<<<<<< HEAD
-The performance of the baseline models, knowledge transfer and gradient boosting are shown in tables \ref{Valence_table} and \ref{Arousal_table}. We can observe the improvement in performance of 
-
-\subsection{Discussion}
+%<<<<<<< HEAD
+%The performance of the baseline models, knowledge transfer and gradient boosting are shown in tables \ref{Valence_table} and \ref{Arousal_table}. We can observe the improvement in performance of 
+%
+%\subsection{Discussion}
 
 %\begin{table}[h]
 %\centering
@@ -244,11 +244,10 @@ The performance of the baseline models, knowledge transfer and gradient boosting
 %\label{Arousal_table}
 %\end{table}
 
-\begin{table}[t]
-=======
+%\begin{table}[t]
+%=======
 The performance of the baseline models, knowledge transfer and gradient boosting are shown in tables \ref{Valence_table} and \ref{Arousal_table}. Figure \ref{comparison} compares the performance of baseline models and gradient boosting technique, in both valence and arousal, across the 30 movies of the LIRIS-ACCEDE dataset. \textit{To Claire From Sonny} is a movie from the dataset and has been labelled in the figure. Figure \ref{genre} shows the distribution of genres in the same dataset.
 \begin{table}[h]
->>>>>>> 66ece5fbee370c6b66fc599e733698f078889a26
 \centering
 \caption{Results for affect prediction using the baseline regressors. The best performances for each dimension are shown in bold. {\bf Make everything having 2 significant digits}}
 \begin{tabular}{@{}l|l|l@{}}
