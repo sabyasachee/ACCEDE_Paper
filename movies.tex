@@ -69,7 +69,8 @@ Note that the frame rates of features from different sources are different.
 In order to synchronize the features with the annotations, we extract statistics on the features along a temporal window with a shift of 1 second. 
 We extract a set of nine statistics (mean, median, standard deviation, kurtosis, lower and upper quartile, minimum, maximum and range) for every feature. 
 Figure \cite{} depicts the extraction of these statistics on the features.
-We chose the length of the temporal windows as the one that maximizes the mutual information between the computed features and affect labels (available on the training set). 
+We chose the length of the temporal windows as the one that maximizes the mutual information between the computed features and affect labels (available on the training set).
+We represent the set of features for a given movie $\mathcal f$ as $\bf X_{\mathcal f} = [X_{\mathcal f}(1), .., X_{\mathcal f}(t), .., X_{\mathcal f}(T) ]$, where $T$ is the total number of analysis frames (equals annotation frames) and $X_{\mathcal f}$(t) is the set of audio and video features extracted for analysis frame $t$. 
 
 \begin{table}[t]
 \centering
@@ -102,12 +103,12 @@ Music & Chroma features (12 semitones) & & \\ \hline
 
 \section{Methodology}
 
-We test several regression schemes to predict the continuos valence and affect ratings from the features described in the last section.
+We test several regression schemes to predict the continuous valence and affect ratings from the features described in the last section.
 Initially, we establish a baseline using multiple regressors.
 We discuss the performance of the baseline models and motivate our knowledge transfer and gradient boosting based method.
 All our experiments are performed by using a leave one out cross-validation scheme.
 During cross-validation, we use 25 movies as the training set, 4 for validation and 1 movie in the test set.
-The primary metric for the evalauation of our methods is Concordance Correlation Coefficient (CCC) \cite{} between the annotated ground truth and the predicted ratings on the test set.
+The primary metric for the evaluation of our methods is Concordance Correlation Coefficient (CCC) \cite{} between the annotated ground truth and the predicted ratings on the test set.
 This metric accounts for both the similarity of pattern between the two time series as well as the difference of bias between them. 
 Along with this, we also report the correlation coefficient and the Root Mean Square Error (RMSE) between the predicted and the true ratings.
 In the next section, we describe the baseline models.
@@ -131,7 +132,7 @@ Correlation coefficient quantifies the linear relationship between the features 
 Finally, neural networks perform a non-linear mapping between the features and the affect ratings. 
 We train a neural network with one hidden layer.
 The number of neurons is tuned on the development set and they have a sigmoidal activation.
-We do not perform feature selection with neural networks ???.
+We do not perform the correlation coefficient based feature selection with neural networks as it can model non-linear relations between the features and the final labels. 
 Table \ref{} shows the results for the performance of these three baseline regression models. 
 
 
@@ -142,9 +143,24 @@ We further list the performances for each movie as obtained using the best regre
 The figure shows that the performance per movie varies quite a bit, thereby indicating that a model trained on a limited amount of dataset may not generalize well.
 For further analysis, we show the histogram of movie genre distribution in the LIRIS-ACCEDE dataset in Figure~\ref{}.
 We observe that certain genres are poorly represented in the dataset, for instance, romance.
-This is also reflected in our results as the trained models do not perform well on the romantic movies (marked with a $\xi$ in the figure). 
+This is also reflected in our results as the trained models do not perform well on the only romantic movie ``To Claire from Sonny" (marked in Figure~\ref{}) as the CCC for both arousal and valence prediction is negative for this movie. 
 Our analysis reflects that a large diversity in the set of movie genres and their limited representation in our dataset needs to be addressed.
 We propose a knowledge transfer + gradient boosting methodology to address this problem, as is discussed in the next section.
+
+
+\begin{figure*}[t]
+\includegraphics[width=\textwidth, height = 8cm]{images/comparison.pdf}
+\centering
+\caption{Performance of Baseline models and Gradient Boosting method across the 30 movies}
+\label{comparison}
+\end{figure*}
+
+\begin{figure}[t]
+\includegraphics[width=10cm]{genre}
+\centering
+\caption{Distribution of genre in LIRIS-ACCEDE Dataset}
+\label{genre}
+\end{figure}
 
 \begin{table}[t]
 \centering
@@ -166,14 +182,14 @@ During knowledge transfer, we borrow information learnt on a larger (albiet mism
 This is followed by gradient boosting, where we combine models learnt on the LIRIS-ACCEDE with the existing knowledge transfer models.
 We discuss these proposed models in detail below. 
 
-\subsection{Knowlege Transfer (KT)}
+\subsection{Knowledge Transfer (KT)}
 During Knowledge Transfer (KT), we train models on a another dataset and operate them on the LIRIS-ACCEDE dataset to obtain the affect ratings.
 To this effect, we use the {\it Discrete LIRIS-ACCEDE dataset} consisting of a larger set of ~10k movie clips.  
-The discrete LIRIS-ACCEDE dataset is different from the continous LIRIS-ACCEDE dataset in several respects.
-The discrete dataset consists of small movie clips (~10 seconds in length) as opposed to the continous dataset (3-28 mins in length).
+The discrete LIRIS-ACCEDE dataset is different from the continuous LIRIS-ACCEDE dataset in several respects.
+The discrete dataset consists of small movie clips (~10 seconds in length) as opposed to the continuous dataset (3-28 mins in length).
 Furthermore, the annotations are provided at the global scale with a single valence and arousal rating for each clip.
-The annotations are in the range of 1-5 as opposed to the scale of -1 to 1 in the continous dataset. 
-We describe the model training on the discrete dataset and application on continous dataset in detail below.
+The annotations are in the range of 1-5 as opposed to the scale of -1 to 1 in the continuous dataset. 
+We describe the model training on the discrete dataset and application on continuous dataset in detail below.
 
 \subsubsection{KT model training}
 Initially, we extract the same of set of features on the discrete dataset as mentioned in the Table~\ref{}.
@@ -183,10 +199,10 @@ We then train a ridge regression model on the feature statistics to predict the 
 \subsubsection{KT model application}
 In order to apply the model trained on the discrete dataset, we again use the feature assemble in Table~\ref{}.
 However the feature statistics are computed over a fixed window length of 10 seconds with a shift of 1 second (please refer to Figure~\ref{}). 
-This window length is emperically chosen to match the length of clips in the discrete dataset.
+This window length is empirically chosen to match the length of clips in the discrete dataset.
 We then predict the affective dimensions per second using the model trained in the last step.
 Since the annotation scales are different for each dataset, we chose to linearly scale the ratings predicted by the knowledge transfer model.
-We obtain the predictions using the KT model on the training set and linearly scale them such the minimum mean sqaured error between the KT model predictions and the true ratings is minimized. 
+We obtain the predictions using the KT model on the training set and linearly scale them such the minimum mean squared error between the KT model predictions and the true ratings is minimized. 
 After the KT step, we train a gradient boosting model as discussed in the next section. 
 
 %We extract the same set of features for the short video clips of Discrete LIRIS-ACCEDE as we had done for the movies of Continuous LIRIS-ACCEDE. We train a model on the 9800 videos and predict single values of valence and arousal for each second for the movies. To scale the predictions from the range $[1,5]$ to $[-1,1]$, we use linear modeling by minimizing the squared error between the true labels and predictions. 
@@ -196,12 +212,20 @@ After the KT step, we train a gradient boosting model as discussed in the next s
 
 %We calculate the pseudo-residual error, the difference of the predictions of knowledge transfer and the ground truth. This difference sequence becomes our new target and we train a model on the feature matrix of the movies to predict it. To account for the effect of history on the current annotation of valence and arousal, we shift our feature matrix forward in time relative to the target vector. The delay is found out by maximising mutual information between the shifted feature matrix and target vector. We additionally apply a smooting average filter on our predictions to subtract any noise present in the movie features. We add our predictions of the pseudo-residual error to the output of knowledge transfer to get our new predictions. This process is repeated again until we no longer see an improvement in performance.
 
-The goal of GB model is to extract information from the smaller set of continuous LIRIS-ACCEDE dataset and {\bf add} it to the prediction from the KT model.
-We use the gradient boosting approach similar to the one proposed by Gupta et al. \cite{} for our experiments.
-Gupta et al. \cite{} proposed an appraoch using linear filters as base learners to predict continous affect in music. 
-We use a modified approach, where we minimize mean squared error using linear regression on the features statitics after introducing a temporal delay.
-We refer the reader to \cite{} for the details of gradient boosting in minimizing the mean squared error and describe the GB model used in our experiments below. 
+The goal of GB model is to extract information from the smaller set of continuous LIRIS-ACCEDE dataset and incorporate it along with the outputs from the KT model for final affect prediction.
+We use the gradient boosting approach similar to the one proposed by Gupta et al. \cite{gupta2015affect} for our experiments.
+Gupta et al. \cite{gupta2015affect} proposed an approach using linear filters as base learners to predict continuous affect in music. 
+We use a modified approach, where we minimize mean squared error using linear regression on the features statistics after introducing a temporal delay.
+We refer the reader to \cite{friedman2001greedy,gupta2015affect} for the details of gradient boosting in minimizing the mean squared error and briefly describe the GB model used in our experiments below. 
+
 \subsubsection{Gradient boosting algorithm for affect prediction}
+The proposed gradient boosting learns an ensemble of $k+1$ learners $\{h_0, h_1, .., h_k\}$, represented as $\bf M_k$. 
+For the set of features $\bf X_{\mathcal f}$ for the movie $\mathcal f$, the affective predictions $\mathcal M_k(X_f)$ are computed as  
+
+\begin{equation}
+\mathcal M_k(X_f) = \sum_{k=0}^K h_k(\mathcal X_f)
+\end{equation}
+
 
 \section{Results}
 %<<<<<<< HEAD
@@ -272,20 +296,6 @@ Gradient boosting& 0.128/ 0.208/ 0.342 & 0.270/ 0.334/ 0.277 \\
 \end{tabular}
 \label{Arousal_table}
 \end{table}
-
-\begin{figure}[h]
-\includegraphics[width=10cm]{genre}
-\centering
-\caption{Distribution of genre in LIRIS-ACCEDE Dataset}
-\label{genre}
-\end{figure}
-
-\begin{figure*}[h]
-\includegraphics[width=\textwidth, height = 8cm]{comparison}
-\centering
-\caption{Performance of Baseline models and Gradient Boosting method across the 30 movies}
-\label{comparison}
-\end{figure*}
 
 \subsection{Discussion}
 We can observe the improvement in performance of Knowledge Transfer and Gradient Boosting compared to the baseline models. Among the baseline models, we observe that the linear models perform best for arousal, whereas neural networks show the best performance in valence prediction. There is no significant improvement for Gradient Boosting over Knowledge Transfer for valence prediction. When we analyze the performance farther across the movies, we observe a more consistent performance for both valence and arousal for gradient boosting compared to baseline. The case of the movie \textit{To Claire From Sonny} has already been discussed, and we can see the improvent in CCC after gradient boosting.
