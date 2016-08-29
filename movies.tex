@@ -219,13 +219,38 @@ We use a modified approach, where we minimize mean squared error using linear re
 We refer the reader to \cite{friedman2001greedy,gupta2015affect} for the details of gradient boosting in minimizing the mean squared error and briefly describe the GB model used in our experiments below. 
 
 \subsubsection{Gradient boosting algorithm for affect prediction}
-The proposed gradient boosting learns an ensemble of $k+1$ learners $\{h_0, h_1, .., h_k\}$, represented as $\bf M_k$. 
+The proposed gradient boosting learns an ensemble of $k+1$ base learners $\{h_0, h_1, .., h_k\}$, represented as $\bf M_k$. 
 For the set of features $\bf X_{\mathcal f}$ for the movie $\mathcal f$, the affective predictions $\mathcal M_k(X_f)$ are computed as  
 
 \begin{equation}
-\mathcal M_k(X_f) = \sum_{k=0}^K h_k(\mathcal X_f)
+\mathcal \bf M_k(\bf X_f) = \sum_{k=0}^K h_k(\bf X_f)
 \end{equation}
 
+where $h_k(\bf X_f)$ is the prediction from the $k^\text{th}$ base learner.
+Each of these base learners are learnt using the following algorithm.
+
+$\bullet$ The base model $M_0 = h_0$ is set as the KT model. Hence the predictions $\bf M_0(\bf X_\mathcal f)$ are as obtained from the KT model mentioned in the previous section. The subsequent predictions in the next steps are added to these predictions in a boosting fashion, therefore allowing for an integration of knowledge learnt from KT and current data. 
+$\bullet$ For k = 1 to K 
+
+\begin{itemize}
+\item Compute the pseudo-residual ${\bf r}_k(f)$ for each file in the training set. 	
+
+\begin{equation} \label{pseudores}
+\begin{aligned}
+\hspace{-3mm}\bm r_k(f) &= - { \frac {\partial \Big({\frac{1}{2}\big|\big|\bm t(f) - M\big(\bm X(f)\big)\big|\big|^2_2}\Big)} {\partial M\big(\bm X(f)\big)} \bigg|}_{\substack{{\text{at }M(\bm X(f)) =} \\ {M_k(\bm X(f))}}}\\
+&= \bm t(f) - M_k\big( \bm X(f) \big)
+\end{aligned}
+\end{equation}
+
+\item Compute a temporal shift in the features that maximizes the mutual information between the shifted features and the pseudo-residuals.
+
+\item Train a linear regressor as the base learner $k$ to predict the pseudo-residual using shifted features.
+
+\item Compute weight of the $k^\text{th}$ base leaner using the following one-dimensional optimization problem.
+
+\item Update the model. 
+
+\end{itemize}
 
 \section{Results}
 %<<<<<<< HEAD
