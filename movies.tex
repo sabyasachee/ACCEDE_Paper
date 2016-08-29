@@ -61,7 +61,7 @@ A set of ten annotators rate each movie for the affective dimensions of arousal 
 For further information regarding the dataset, we refer the reader to \cite{}.
 In the next section, we describe the features used in our experiments.
 
-\subsection{Feature extraction}
+\subsection{Feature extraction} \label{feature_extraction}
 We use an assembly of visual, speech and music features to train our models.
 Table \ref{table:features} shows the list of features along with their frame rate and toolbox used. 
 Note that the frame rates of features from different sources are different.
@@ -132,17 +132,17 @@ Finally, neural networks perform a non-linear mapping between the features and t
 We train a neural network with one hidden layer.
 The number of neurons is tuned on the development set and they have a sigmoidal activation.
 We do not perform the correlation coefficient based feature selection with neural networks as it can model non-linear relations between the features and the final labels. 
-Table \ref{} shows the results for the performance of these three baseline regression models. 
+Table \ref{Baseline_table} shows the results for the performance of these three baseline regression models. 
 
 
 \subsubsection{Discussion} From the results, we observe that the performance for affect prediction varies across the three models.
 Particularly, the best performing models are different for the two dimensions.
 Neural network regressor performs the best for valence, while linear regression with feature selection performs the best for arousal.
-We further list the performances for each movie as obtained using the best regressors for both arousal and valence in Figure~\ref{}. 
+We further list the performances for each movie as obtained using the best regressors for both arousal and valence in Figure~\ref{comparison}. 
 The figure shows that the performance per movie varies quite a bit, thereby indicating that a model trained on a limited amount of dataset may not generalize well.
-For further analysis, we show the histogram of movie genre distribution in the LIRIS-ACCEDE dataset in Figure~\ref{}.
+For further analysis, we show the histogram of movie genre distribution in the LIRIS-ACCEDE dataset in Figure~\ref{genre}.
 We observe that certain genres are poorly represented in the dataset, for instance, romance.
-This is also reflected in our results as the trained models do not perform well on the only romantic movie ``To Claire from Sonny" (marked in Figure~\ref{}) as the CCC for both arousal and valence prediction is negative for this movie. 
+This is also reflected in our results as the trained models do not perform well on the only romantic movie ``To Claire from Sonny" (marked in Figure~\ref{comparison}) as the CCC for both arousal and valence prediction is negative for this movie. 
 Our analysis reflects that a large diversity in the set of movie genres and their limited representation in our dataset needs to be addressed.
 We propose a knowledge transfer + gradient boosting methodology to address this problem, as is discussed in the next section.
 
@@ -184,19 +184,19 @@ We discuss these proposed models in detail below.
 \subsection{Knowledge Transfer (KT)}
 During Knowledge Transfer (KT), we train models on a another dataset and operate them on the LIRIS-ACCEDE dataset to obtain the affect ratings.
 To this effect, we use the {\it Discrete LIRIS-ACCEDE dataset} consisting of a larger set of ~10k movie clips.  
-The discrete LIRIS-ACCEDE dataset is different from the continuous LIRIS-ACCEDE dataset in several respects.
+The discrete LIRIS-ACCEDE dataset is different from the continuous LIRIS-ACCEDE dataset in several respects, as shown in Table \ref{differences}.
 The discrete dataset consists of small movie clips (~10 seconds in length) as opposed to the continuous dataset (3-28 mins in length).
 Furthermore, the annotations are provided at the global scale with a single valence and arousal rating for each clip.
 The annotations are in the range of 1-5 as opposed to the scale of -1 to 1 in the continuous dataset. 
 We describe the model training on the discrete dataset and application on continuous dataset in detail below.
 
 \subsubsection{KT model training}
-Initially, we extract the same of set of features on the discrete dataset as mentioned in the Table~\ref{}.
-However, we compute the statistics (listed in section~\ref{}) over the entire duration of the clip.
+Initially, we extract the same of set of features on the discrete dataset as mentioned in the Table~\ref{table:features}.
+However, we compute the statistics (listed in section~\ref{feature_extraction}) over the entire duration of the clip.
 We then train a ridge regression model on the feature statistics to predict the discrete ratings.
 
 \subsubsection{KT model application}
-In order to apply the model trained on the discrete dataset, we again use the feature assemble in Table~\ref{}.
+In order to apply the model trained on the discrete dataset, we again use the feature assemble in Table~\ref{table:features}.
 However the feature statistics are computed over a fixed window length of 10 seconds with a shift of 1 second (please refer to Figure~\ref{}). 
 This window length is empirically chosen to match the length of clips in the discrete dataset.
 We then predict the affective dimensions per second using the model trained in the last step.
@@ -271,7 +271,7 @@ RR           & 0.04/ 0.12/ 0.34 & 0.03/ 0.14/ 0.29 \\
 RR + FeatSel & 0.04/ 0.12/ 0.34 & 0.10/ 0.29/ 0.28 \\ 
 NN           & 0.12/ 0.36/ 0.33 & 0.02/ 0.09/ 0.30 \\ 
 \end{tabular}
-\label{Arousal_table}
+\label{Baseline_table}
 \caption{Results for affect prediction using the proposed methods. We show the overall best performance for each dimension in bold.} 
 \begin{tabular}{@{}l|l|l@{}}
 \hline
@@ -280,7 +280,7 @@ NN           & 0.12/ 0.36/ 0.33 & 0.02/ 0.09/ 0.30 \\
 Knowldge transfer& 0.128/ 0.295/ 0.331 & 0.221/ 0.249/ 0.299 \\ 
 Gradient boosting& 0.128/ 0.208/ 0.342 & 0.270/ 0.334/ 0.277 \\ 
 \end{tabular}
-\label{Arousal_table}
+\label{KT_table}
 \end{table}
 
 \subsection{Discussion}
