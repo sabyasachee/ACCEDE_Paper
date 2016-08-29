@@ -53,12 +53,11 @@ Gradient Boosting, Knowledge Transfer, Valence, Arousal
 
 
 \section{Dataset}
-%The data is taken from the LIRIS-ACCEDE(Annotated Creative Commons Emotional DatabaseE for affective video content analysis) database \cite{baveye2015liris} presented in the 2016 MediaEval Emotional Impact of Movies Task. The dataset contains 30 short films of length varying from 3 to 28 minutes, each with a valence and arousal label in the range -1 to 1 for every second, annotated by 10 participants.
 
 We use the {\it Annotated Creative Commons Emotional DatabaseE for affective video content analysis} (LIRIS-ACCEDE) dataset for the purpose of our experiments.
 This dataset was also used as part of the {\it emotional impact of movies task} organized at the MediaEval challenge 2016 \cite{}.
 The dataset consists of 30 short films of length varying from 3 to 28 minutes.
-A set of ten annotators rate each movie for the affective dimensions of arousal and valence at a frame rate of 1 sample per second within a range of -1 to 1. 
+A set of ten annotators rate each movie for the affective dimensions of arousal and valence at a frame rate of 1 sample per second, within a range of -1 to 1. 
 For further information regarding the dataset, we refer the reader to \cite{}.
 In the next section, we describe the features used in our experiments.
 
@@ -70,7 +69,7 @@ In order to synchronize the features with the annotations, we extract statistics
 We extract a set of nine statistics (mean, median, standard deviation, kurtosis, lower and upper quartile, minimum, maximum and range) for every feature. 
 Figure \cite{} depicts the extraction of these statistics on the features.
 We chose the length of the temporal windows as the one that maximizes the mutual information between the computed features and affect labels (available on the training set).
-We represent the set of features for a given movie $\mathcal f$ as $\bf X_{\mathcal f} = [X_{\mathcal f}(1), .., X_{\mathcal f}(t), .., X_{\mathcal f}(T) ]$, where $T$ is the total number of analysis frames (equals annotation frames) and $X_{\mathcal f}$(t) is the set of audio and video features extracted for analysis frame $t$. 
+We represent the set of features for a given movie $\mathcal{F}$ as $\bf X_{\mathcal{F}} = [X_{\mathcal{F}}(1), .., X_{\mathcal{F}}(t), .., X_{\mathcal{F}}(T) ]$, where $T$ is the total number of analysis frames (equals annotation frames) and $X_{\mathcal{F}}$(t) is the set of audio and video features extracted for analysis frame $t$. 
 
 \begin{table}[t]
 \centering
@@ -149,14 +148,14 @@ We propose a knowledge transfer + gradient boosting methodology to address this 
 
 
 \begin{figure*}[t]
-\includegraphics[width=\textwidth, height = 8cm]{images/comparison.pdf}
+\includegraphics[width=\textwidth, height = 6cm]{images/comparison2.pdf}
 \centering
 \caption{Performance of Baseline models and Gradient Boosting method across the 30 movies}
 \label{comparison}
 \end{figure*}
 
 \begin{figure}[t]
-\includegraphics[width=10cm]{genre}
+\includegraphics[width=7cm]{genre2}
 \centering
 \caption{Distribution of genre in LIRIS-ACCEDE Dataset}
 \label{genre}
@@ -254,68 +253,23 @@ $\bullet$ For k = 1 to K
 
 We summarize the results of the KT and GB models and discuss them in the next section.
 
-%<<<<<<< HEAD
-%The performance of the baseline models, knowledge transfer and gradient boosting are shown in tables \ref{Valence_table} and \ref{Arousal_table}. We can observe the improvement in performance of 
-%
-%\subsection{Discussion}
-
-%\begin{table}[h]
-%\centering
-%\begin{tabular}{|l|l|l|l|}
-%\hline
-%						& RMSE		& Correlation 	& CCC 	 \\ \hline
-%Linear 					& 0.344		& 0.143		& 0.058  \\ \hline	
-%Linear (feature selection)		& 0.339		& 0.200 		& 0.075	 \\ \hline
-%Ridge					& 0.344 		& 0.122		& 0.039	 \\ \hline
-%Ridge (feature selection)		& 0.344		& 0.121		& 0.044	 \\ \hline
-%NN						& 0.330		& .363		& 0.116 \\ \hline
-%& & & \\ \hline
-%Knowledge transfer 		& 0.331		& 0.295		& \textbf{0.128}	 \\ \hline
-%Gradient boosting 			& 0.342 		& 0.208 		& \textbf{0.128}  \\ \hline
-%\end{tabular}
-%\caption{Results for Valence. The bold numbers shows the improvement.}
-%\label{Valence_table}
-%\end{table}
-%
-%\begin{table}[h]
-%\centering
-%\begin{tabular}{|l|l|l|l|}
-%\hline
-%						& RMSE		& Correlation 	& CCC 	 \\ \hline
-%Linear					& 0.286		& 0.171		& 0.064  \\ \hline	
-%Linear (feature selection)		& 0.278		& 0.305 		& 0.113	 \\ \hline
-%Ridge					& 0.288  		& 0.141		& 0.030	 \\ \hline
-%Ridge (feature selection)		& 0.279		& 0.293		& 0.097	 \\ \hline
-%NN						& 0.296		& 0.092		& 0.023 \\ \hline
-%& & & \\ \hline
-%Knowledge transfer 		& 0.299		& 0.249 		& \textbf{0.221}	 \\ \hline
-%Gradient boosting 			& 0.277 		& 0.334 		& \textbf{0.270}  \\ \hline
-%\end{tabular}
-%\caption{Results for Arousal. The bold numbers shows the improvement.}
-%\label{Arousal_table}
-%\end{table}
-
-%\begin{table}[t]
-%=======
-%The performance of the baseline models, knowledge transfer and gradient boosting are shown in tables \ref{Valence_table} and \ref{Arousal_table}. Figure \ref{comparison} compares the performance of baseline models and gradient boosting technique, in both valence and arousal, across the 30 movies of the LIRIS-ACCEDE dataset. \textit{To Claire From Sonny} is a movie from the dataset and has been labelled in the figure. Figure \ref{genre} shows the distribution of genres in the same dataset.
-
 \section{Results}
-Table~\ref{} shows the results for KT and GB models.
+%Table \ref{} shows the results for KT and GB models.
 
 
 
 \begin{table}[t]
 \centering
-\caption{Results for affect prediction using the baseline regressors. The best performances for each dimension are shown in bold. {\bf Make everything having 2 significant digits}}
+\caption{Results for affect prediction using the baseline regressors. The best performances for each dimension are shown in bold.}
 \begin{tabular}{@{}l|l|l@{}}
 \hline
 				        & \multicolumn{2}{c}{CCC/ $\rho$/ RMSE}\\ \cline{2-3}
 				        & Valence       & Arousal \\ \hline
-LR           & 0.058/ 0.143/ 0.344 & 0.064/ 0.171/ 0.286 \\ 
-LR + FeatSel & 0.075/ 0.200/ 0.339 & 0.113/ 0.305/ 0.278 \\ 
-RR           & 0.039/ 0.122/ 0.344 & 0.030/ 0.141/ 0.288 \\ 
-RR + FeatSel & 0.044/ 0.121/ 0.344 & 0.097/ 0.293/ 0.279 \\ 
-NN           & 0.116/ 0.363/ 0.330 & 0.023/ 0.092/ 0.296 \\ 
+LR           & 0.06/ 0.14/ 0.34 & 0.06/ 0.17/ 0.29 \\ 
+LR + FeatSel & 0.07/ 0.20/ 0.34 & 0.11/ 0.30/ 0.28 \\ 
+RR           & 0.04/ 0.12/ 0.34 & 0.03/ 0.14/ 0.29 \\ 
+RR + FeatSel & 0.04/ 0.12/ 0.34 & 0.10/ 0.29/ 0.28 \\ 
+NN           & 0.12/ 0.36/ 0.33 & 0.02/ 0.09/ 0.30 \\ 
 \end{tabular}
 \label{Arousal_table}
 \caption{Results for affect prediction using the proposed methods. We show the overall best performance for each dimension in bold.} 
