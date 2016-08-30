@@ -299,10 +299,15 @@ We summarize the results of the KT and GB models and discuss them in the next se
 %=======
 %The performance of the baseline models, knowledge transfer and gradient boosting are shown in tables \ref{Valence_table} and \ref{Arousal_table}. Figure \ref{comparison} compares the performance of baseline models and gradient boosting technique, in both valence and arousal, across the 30 movies of the LIRIS-ACCEDE dataset. \textit{To Claire From Sonny} is a movie from the dataset and has been labelled in the figure. Figure \ref{genre} shows the distribution of genres in the same dataset.
 
-\section{Results}
+\section{Results and discussion}
 Table~\ref{} shows the results for KT and GB models.
-
-
+From the results, we observe that the KT model by itself outperforms all of the baselines.
+This indicates that the affect modeling from a larger (and mismatched) dataset outperforms the models learnt on a smaller dataset (although with matched conditions). 
+Further model training using GB incorporating KT model as the first base learner improves performance for arousal. 
+However, an improvement is not observed for valence prediction.
+This may indicate that valence prediction based on the matched dataset is rather poor and does not improvement the performance beyond that predicted by the KT model.
+We perform further analysis      
+ 
 
 \begin{table}[t]
 \centering
