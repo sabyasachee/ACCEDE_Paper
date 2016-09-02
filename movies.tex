@@ -38,7 +38,9 @@ $^+$Signal Analysis and Interpretation Lab, University of Southern California, L
 \maketitle
 %
 \begin{abstract}
-   Put abstract here 
+Affect prediction is a classical problem and has recently garnered special interest in media applications. 
+Affect prediction in movies is one such domain, potentially impacting the design and undering impact of movies.
+
  
 \end{abstract}
 %
@@ -304,38 +306,44 @@ This indicates that the affect modeling from a larger (and mismatched) dataset o
 Further model training using GB incorporating KT model as the first base learner improves performance for arousal. 
 However, an improvement is not observed for valence prediction.
 This may indicate that valence prediction based on the matched dataset is rather poor and does not improvement the performance beyond that predicted by the KT model.
-We perform further analysis      
- 
-
-
+We perform further analysis regarding the performance of the models on each movie individually, and present our findings. 
 
 \begin{table}[t]
 \centering
 \caption{Results for affect prediction using the baseline regressors. The best performances for each dimension are shown in bold.}
 \begin{tabular}{@{}l|l|l@{}}
 \hline
-				        & \multicolumn{2}{c}{CCC/ $\rho$/ RMSE}\\ \cline{2-3}
+				        & \multicolumn{2}{c}{CCC ($\rho$/ RMSE)}\\ \cline{2-3}
 				        & Valence       & Arousal \\ \hline
-LR           & 0.06/ 0.14/ 0.34 & 0.06/ 0.17/ 0.29 \\ 
-LR + FeatSel & 0.07/ 0.20/ 0.34 & 0.11/ 0.30/ 0.28 \\ 
-RR           & 0.04/ 0.12/ 0.34 & 0.03/ 0.14/ 0.29 \\ 
-RR + FeatSel & 0.04/ 0.12/ 0.34 & 0.10/ 0.29/ 0.28 \\ 
-NN           & 0.12/ 0.36/ 0.33 & 0.02/ 0.09/ 0.30 \\ 
+LR           & 0.06 (0.14/ 0.34) & 0.06 (0.17/ 0.29) \\ 
+LR + FeatSel & 0.07 (0.20/ 0.34) & 0.11 (0.30/ 0.28) \\ 
+RR           & 0.04 (0.12/ 0.34) & 0.03 (0.14/ 0.29) \\ 
+RR + FeatSel & 0.04 (0.12/ 0.34) & 0.10 (0.29/ 0.28) \\ 
+NN           & 0.12 (0.36/ 0.33) & 0.02 (0.09/ 0.30) \\ 
 \end{tabular}
 \label{Baseline_table}
 \caption{Results for affect prediction using the proposed methods. We show the overall best performance for each dimension in bold.} 
 \begin{tabular}{@{}l|l|l@{}}
 \hline
-				        & \multicolumn{2}{c}{CCC/ $\rho$/ RMSE}\\ \cline{2-3}
+				        & \multicolumn{2}{c}{CCC ($\rho$/ RMSE)}\\ \cline{2-3}
 				        & Valence       & Arousal \\ \hline
-Knowldge transfer& 0.128/ 0.295/ 0.331 & 0.221/ 0.249/ 0.299 \\ 
-Gradient boosting& 0.128/ 0.208/ 0.342 & 0.270/ 0.334/ 0.277 \\ 
+Knowldge transfer& 0.13 (0.30/ 0.33) & 0.22 (0.25/ 0.30) \\ 
+Gradient boosting& 0.13 (0.21/ 0.34) & 0.27 (0.33/ 0.28) \\ 
 \end{tabular}
 \label{KT_table}
 \end{table}
 
 \subsection{Discussion}
-We can observe the improvement in performance of Knowledge Transfer and Gradient Boosting compared to the baseline models. Among the baseline models, we observe that the linear models perform best for arousal, whereas neural networks show the best performance in valence prediction. There is no significant improvement for Gradient Boosting over Knowledge Transfer for valence prediction. When we analyze the performance farther across the movies, we observe a more consistent performance for both valence and arousal for gradient boosting compared to baseline. The case of the movie \textit{To Claire From Sonny} has already been discussed, and we can see the improvent in CCC after gradient boosting.
+%We can observe the improvement in performance of Knowledge Transfer and Gradient Boosting compared to the baseline models. Among the baseline models, we observe that the linear models perform best for arousal, whereas neural networks show the best performance in valence prediction. There is no significant improvement for Gradient Boosting over Knowledge Transfer for valence prediction. When we analyze the performance farther across the movies, we observe a more consistent performance for both valence and arousal for gradient boosting compared to baseline. The case of the movie \textit{To Claire From Sonny} has already been discussed, and we can see the improvent in CCC after gradient boosting.
+
+In order to compare with the per-movie performance of the baseline system, we present the performance of the GB model in Figure~\ref{} for each movie individually.
+From the figure, we observe that the performance of the movies is more consistent in GB models, with fewer movies with a negative CCC in arousal and valence.
+Further, we compared the standard deviations of per-movie arousal ($\sigma_\text{aro}$) and valence ($\sigma_\text{val}$) performances between the baseline and GB models ($\sigma$ computed over arousal and valence CCC for the 30 movies) 
+The ($\sigma_\text{aro}$) computed over GB models is signficantly better than when computed over the best baseline model (F-test, p-value $<$ 5\%). 
+Although, the reduction in ($\sigma_\text{val}$) using GB models over the best baseline model is not signifanct (F-test, p-value = ??), we do observe a marginal improvement. 
+
+Overall, our experiments suggest that using KT + GB models outperform the baseline models and the motivation for their use lies in the limited avaliability of (potentially very diverse) in domain data.
+Our models not only improve the performance in affect prediction, they are also more consistent in predicting affect across the movies in the dataset, drawn from various genres.
 
 \section{Conclusion}
 Knowledge Transfer from a larger and more varied dataset not only improves performance, but also results in more consistent CCC values for different movies. We have used root mean squared error as a proxy for the evaluation of pseudo-residual error for now. We endeavour to use CCC instead in the farther work. 
