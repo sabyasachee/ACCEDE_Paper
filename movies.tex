@@ -39,8 +39,14 @@ $^+$Signal Analysis and Interpretation Lab, University of Southern California, L
 %
 \begin{abstract}
 Affect prediction is a classical problem and has recently garnered special interest in media applications. 
-Affect prediction in movies is one such domain, potentially impacting the design and undering impact of movies.
-
+Affect prediction in movies is one such domain, potentially aiding the design as well as analysis of the impact of movies.
+Given the large diversity in movie datasets (such as different genres and languages), obtaining a comprehensive movie dataset for modeling affect is challenging while models trained on small datasets may not generalize. 
+In this paper, we address the problem of continuous affect ratings with the availability of limited in domain data resources. 
+We initially setup several baseline models trained on in domain data, followed by a proposal of a Knowledge Transfer (KT) + Gradient Boosting (GB) approach.
+KT learns models on a larger (although mismatched) data which are then adapted to make predictions on the data of interest. 
+GB further updates these predictions based on models learnt from the in domain data.
+We observe that the KT+GB models provide Concordance Correlation Coefficient (CCC) values of x and x for valence and affect prediction on ACCEDE continuous datasets against best baseline prediction values of x and x. 
+KT+GB models not only improve the overall performance metrics, we also observe a more consistent performance across movies of various genres. 
  
 \end{abstract}
 %
@@ -50,13 +56,17 @@ Gradient Boosting, Knowledge Transfer, Valence, Arousal
 %
 \section{Introduction}
 \label{sec:intro}
+Movies are often (if not always) designed to carry a specific emotional impact on its audience.
+Researchers have extended the classical problem of affect prediction to the domain of movies with the goal of understanding the impact of movies as well as aiding the design and analysis of movies. 
+
+
 
 \section{Background}
 
 
 \section{Dataset}
 
-We use the {\it Annotated Creative Commons Emotional DatabaseE for affective video content analysis} (LIRIS-ACCEDE) dataset for the purpose of our experiments.
+We use the {\it Annotated Creative Commons Emotional Database for affective video content analysis} (LIRIS-ACCEDE) dataset for the purpose of our experiments.
 This dataset was also used as part of the {\it emotional impact of movies task} organized at the MediaEval challenge 2016 \cite{}.
 The dataset consists of 30 short films of length varying from 3 to 28 minutes.
 A set of ten annotators rate each movie for the affective dimensions of arousal and valence at a frame rate of 1 sample per second, within a range of -1 to 1. 
