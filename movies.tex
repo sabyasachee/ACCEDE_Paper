@@ -70,10 +70,24 @@ Several previous works have investigated the emotional impact of movies \cite{ba
 Furthermore, researchers have also applied machine-learning algorithms to both understand and predict emotions of movies.
 Examples include movie content analysis based on arousal and valence features \cite{xu2008hierarchical}, affect ranking of movie scenes using physiological signals and content analysis \cite{soleymani2008affective} as well as examination of other supervised methods, deep learning and kernel methods within the prediction of affect in movies \cite{malandrakis2011supervised, baveye2015deep}.
 Studies have also addressed the issue of robustness in affect prediction using mixture models \cite{goyal2015multimodal} and multimodal learning \cite{pang2015mutlimodal}. 
-On the other hand, studies have investigated knowledge transfer (/ transfer learning) and have proposed various algorithms as boosting \cite{} 
+On the other hand, studies have investigated knowledge transfer (/ transfer learning) and have proposed various algorithms as boosting \cite{dai2007boosting}, and transfer learning vis dimensionality reduction \cite{}.	 
+We in this work, implement a knowledge transfer aided with gradient boosting that combines learning from external as well as in domain data resources.
+To the best of our knowledge, this is the first such work in movie affect prediction (particularly using data with mismatch even in the annotation protocol and granularity). 
 
+The LIRIS-ACCEDE dataset consists of 30 movies spanning various genres, languages as well as recording conditions (e.g. color vs black and white vs cartoon).
+We initially train various baseline statistical models on the limited in domain dataset to predict the affective dimensions of valence and arousal at a frame rate of 1 value per second.
+We analyse the results and obseve the performance of models across the movies and motivate the application of KT+GB models.
+The KT models are trained on a larger dataset and the model predictions are then adapted to perform prediction on the in domain dataset.
+We the propose a GB approach, incorporating KT models as a component.
+The GB models are trained sequentially on a pseudo-residual from the previous models and usually are ensemble of weak learners \cite{}. 
+Our results reflect that KT models, just by themselves, improve upon the conventional in domain statisitcal models.
+Where as the performance for valence saturates using KT models, GB models provide further leverage using in domain data for arousal.
+The proposed GB+KT models achieve a Concordance Correlation Coefficient (CCC, a metric accounging for both correlation and bias difference \cite{}) value of x and x on the LIRIS-ACCEDE dataset, against best baseline performances of x and x.
+Further analysis also reveals that not only KT+GB models enhance the performance, but their performances are more consistent across individual movies in the dataset.
 
-
+We next describe the our dataset of choice in Section 2.
+Section 3 describes our methodology and results are presented in Section 4. 
+Finally, we present our conclusions and future work in Section 5.
 
 \section{Dataset}
 
