@@ -39,50 +39,52 @@ $^+$Signal Analysis and Interpretation Lab, University of Southern California, L
 %
 \begin{abstract}
 Affect prediction is a classical problem and has recently garnered special interest in media applications. 
-Affect prediction in movies is one such domain, potentially aiding the design as well as analysis of the impact of movies.
-Given the large diversity in movie datasets (such as different genres and languages), obtaining a comprehensive movie dataset for modeling affect is challenging while models trained on small datasets may not generalize. 
+Affect prediction in movies is one such domain, potentially aiding the design as well as the impact analysis of movies.
+Given the large diversity in movies (such as different genres and languages), obtaining a comprehensive movie dataset for modeling affect is challenging while models trained on smaller datasets may not generalize. 
 In this paper, we address the problem of continuous affect ratings with the availability of limited in domain data resources. 
 We initially setup several baseline models trained on in domain data, followed by a proposal of a Knowledge Transfer (KT) + Gradient Boosting (GB) approach.
 KT learns models on a larger (although mismatched) data which are then adapted to make predictions on the data of interest. 
 GB further updates these predictions based on models learnt from the in domain data.
 We observe that the KT+GB models provide Concordance Correlation Coefficient (CCC) values of x and x for valence and affect prediction on ACCEDE continuous datasets against best baseline prediction values of x and x. 
-KT+GB models not only improve the overall performance metrics, we also observe a more consistent performance across movies of various genres. 
+Not only the KT+GB models improve the overall performance metrics, we also observe a more consistent model performance across movies of various genres. 
  
 \end{abstract}
 %
 \begin{keywords}
-Gradient Boosting, Knowledge Transfer, Valence, Arousal
+Gradient Boosting, Knowledge Transfer, affect prediction in movies 
 \end{keywords}
 %
 \section{Introduction}
 \label{sec:intro}
 Movies are often (if not always) designed to carry a specific emotional impact on its audience \cite{}.
-Researchers have extended the classical problem of affect prediction to the domain of movies with the goal of understanding the impact of movies as well as aiding the design and analysis of movies. 
+Researchers have extended the classical problem of affect prediction to the domain of movies with the goal of understanding the impact of movies as well as aiding the design and analysis of movies \cite{}. 
 Existing algorithms make use of statistical models trained on audio-visual features to predict affective dimensions (e.g. valence and arousal).  
-These statistical models often require sufficient amount of data for a low generalization error \cite{}.
-Given that movie span a vast variety of genres, are recorded in different languages and even differ from one temporal period to other, comprehensive movie datasets (with the desired set of annotations) may not always be available to train such statistical models. 
-In this paper, we address the problem of continous affect tracking in movies, with limited availability of in domain data to train low error statistical models. 
+These statistical models often require sufficiently large amounts of data for a low generalization error \cite{}.
+Given that movie span a vast variety of genres, are recorded in different languages and even differ from one temporal period to other, comprehensive movie datasets (along with the desired set of annotations) may not always be available to train such statistical models. 
+In this paper, we address the problem of continuous affect tracking in movies, with limited availability of in domain data to train low error statistical models. 
 We propose a Knowledge Transfer (KT) approach aided with Gradient Boosting (GB) to predict affect in the {\it LIRIS-Annotated Creative Commons Emotional Database for affective video content analysis} (LIRIS-ACCEDE) database, a dataset with a limited amount of training data.
-We train the KT models on a larger (mismatched) dataset and are adapted to dataset of interest. 
+We train the KT models on a larger (albeit mismatched) dataset and are adapted to dataset of interest. 
 GB models are trained on a smaller in domain data and operate along with KT models to predict affect on movies.
+The overarching goal of our experiments is to initiate a platform to unify the ongoing efforts in media related research, potentially sharing resources despite inherent incompatibilities. 
 
 Several previous works have investigated the emotional impact of movies \cite{bartsch2010predicting, carroll2010movies}. 
-Furthermore, researchers have also applied machine-learning algorithms to both understand and predict emotions of movies.
+Furthermore, researchers have also applied machine-learning algorithms to both understand and predict emotions induced by movies.
 Examples include movie content analysis based on arousal and valence features \cite{xu2008hierarchical}, affect ranking of movie scenes using physiological signals and content analysis \cite{soleymani2008affective} as well as examination of other supervised methods, deep learning and kernel methods within the prediction of affect in movies \cite{malandrakis2011supervised, baveye2015deep}.
 Studies have also addressed the issue of robustness in affect prediction using mixture models \cite{goyal2015multimodal} and multimodal learning \cite{pang2015mutlimodal}. 
-On the other hand, studies have investigated knowledge transfer (/ transfer learning) and have proposed various algorithms as boosting \cite{dai2007boosting}, and transfer learning vis dimensionality reduction \cite{}.	 
-We in this work, implement a knowledge transfer aided with gradient boosting that combines learning from external as well as in domain data resources.
-To the best of our knowledge, this is the first such work in movie affect prediction (particularly using data with mismatch even in the annotation protocol and granularity). 
+On the other hand, studies have investigated knowledge transfer (/transfer learning) and have proposed various algorithms as boosting \cite{dai2007boosting}, and transfer learning vis dimensionality reduction \cite{}.	 
+In this work, we propose a knowledge transfer approach, aided with gradient boosting, to predict affective dimensions in movies.  
+Our approach combines learning from external as well as in domain data resources.
+To the best of our knowledge, this is the first such work in movie affect prediction (particularly using data with mismatched in content as well as the annotation protocol and granularity). 
 
 The LIRIS-ACCEDE dataset consists of 30 movies spanning various genres, languages as well as recording conditions (e.g. color vs black and white vs cartoon).
 We initially train various baseline statistical models on the limited in domain dataset to predict the affective dimensions of valence and arousal at a frame rate of 1 value per second.
-We analyse the results and obseve the performance of models across the movies and motivate the application of KT+GB models.
-The KT models are trained on a larger dataset and the model predictions are then adapted to perform prediction on the in domain dataset.
-We the propose a GB approach, incorporating KT models as a component.
+We analyze the baseline results, observe the performance of models across the movies and motivate the application of KT+GB models.
+The KT models are trained on a larger dataset and the model predictions are then adapted to perform prediction on the dataset of interest.
+We then propose a GB approach, incorporating KT models as a component.
 The GB models are trained sequentially on a pseudo-residual from the previous models and usually are ensemble of weak learners \cite{}. 
-Our results reflect that KT models, just by themselves, improve upon the conventional in domain statisitcal models.
+Our results reflect that KT models, just by themselves, improve upon the conventional in domain statistical models.
 Where as the performance for valence saturates using KT models, GB models provide further leverage using in domain data for arousal.
-The proposed GB+KT models achieve a Concordance Correlation Coefficient (CCC, a metric accounging for both correlation and bias difference \cite{}) value of x and x on the LIRIS-ACCEDE dataset, against best baseline performances of x and x.
+The proposed GB+KT models achieve a Concordance Correlation Coefficient (CCC, a metric accounting for both correlation and bias difference \cite{}) value of x and x on the LIRIS-ACCEDE dataset, against best baseline performances of x and x.
 Further analysis also reveals that not only KT+GB models enhance the performance, but their performances are more consistent across individual movies in the dataset.
 
 We next describe the our dataset of choice in Section 2.
@@ -94,13 +96,14 @@ Finally, we present our conclusions and future work in Section 5.
 We use the {\it Annotated Creative Commons Emotional Database for affective video content analysis} (LIRIS-ACCEDE) dataset for the purpose of our experiments.
 This dataset was also used as part of the {\it emotional impact of movies task} organized at the MediaEval challenge 2016 \cite{}.
 The dataset consists of 30 short films of length varying from 3 to 28 minutes.
-A set of ten annotators rate each movie for the affective dimensions of arousal and valence at a frame rate of 1 sample per second, within a range of -1 to 1. 
+A set of ten annotators rate each movie for the affective dimensions of arousal and valence at a frame rate of 1 sample per second, within a range of -1 to 1.
+The final ratings are obtained as frame-wise mean of annotations from each annotator. 
 For further information regarding the dataset, we refer the reader to \cite{}.
 In the next section, we describe the features used in our experiments.
 
 \subsection{Feature extraction} \label{feature_extraction}
 We use an assembly of visual, speech and music features to train our models.
-Table \ref{table:features} shows the list of features along with their frame rate and toolbox used. 
+Table \ref{table:features} shows the list of features along with their frame rate and the extraction toolbox used. 
 Note that the frame rates of features from different sources are different.
 In order to synchronize the features with the annotations, we extract statistics on the features along a temporal window with a shift of 1 second. 
 We extract a set of nine statistics (mean, median, standard deviation, kurtosis, lower and upper quartile, minimum, maximum and range) for every feature. 
