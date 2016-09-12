@@ -37,6 +37,8 @@ $^+$Signal Analysis and Interpretation Lab, University of Southern California, L
 %
 \maketitle
 %
+
+\begin{spacing}{0.9}
 \begin{abstract}
 Affect prediction is a classical problem and has recently garnered special interest in multimedia applications. 
 Affect prediction in movies is one such domain, potentially aiding the design as well as the impact analysis of movies.
@@ -54,13 +56,15 @@ Not only the KT + GB models improve the overall performance metrics, we also obs
 Gradient Boosting, Knowledge Transfer, affect prediction in movies 
 \end{keywords}
 %
+\vspace{-2mm}
 \section{Introduction}
+\vspace{-2mm}
 \label{sec:intro}
-Movies are often (if not always) designed to carry a specific emotional impact on its audience \cite{bartsch2012emotional, canini2009emotional}.
+Movies are often (if not always) designed convey a specific emotional experienceon its audience \cite{bartsch2012emotional, canini2009emotional}.
 Researchers have extended the classical problem of affect prediction to the domain of movies with the goal of understanding the impact of movies as well as aiding the design and analysis of movies \cite{giannakopoulos2009dimensional, jiang2014predicting}. 
 Most of the existing algorithms make use of statistical models trained on audio-visual features to predict affective dimensions (e.g. valence and arousal).  
 These statistical models often require sufficiently large amounts of data for a low generalization error \cite{vapnik1998statistical}.
-Given that movies span a vast variety of genres, are recorded in different languages and even differ across cultures, comprehensive movie datasets (along with the desired set of annotations) may not always be available to train such statistical models. 
+Given that movies span a vast variety of genres, are recorded in different languages and differ across cultures, comprehensive movie datasets (along with the desired set of annotations) may not always be available to train such statistical models. 
 In this paper, we address the problem of continuous affect tracking in movies, with limited availability of in domain data to train low error statistical models. 
 We propose a Knowledge Transfer (KT) approach aided with Gradient Boosting (GB) to predict affective dimensions in the {\it continuous LIRIS-ACCEDE (Annotated Creative Commons Emotional Database for affective video content analysis)} database \cite{baveye2015liris}.
 We train the KT models on a larger (albeit mismatched) dataset, which are later adapted to dataset of interest. 
@@ -87,12 +91,15 @@ Our results reflect that KT models, on their own, improve upon the conventional 
 While the performance for valence saturates using KT models, GB models provide further leverage using in domain data for arousal.
 The proposed KT + GB models achieve Concordance Correlation Coefficient (CCC, a metric accounting for both correlation and bias difference \cite{liao2000note,valstar2016avec}) values of 0.13 and 0.27 between true and predicted valence and arousal ratings, respectively (against best baseline performances of 0.12 and 0.11).
 Further analysis also reveals that not only KT + GB models enhance the performance, but their performances are more consistent across individual movies in the dataset.
+We describe our dataset of choice in the next section, followed by a description of our methodology.
 
-We next describe our dataset of choice in Section 2.
-Section 3 describes our methodology and results are presented in Section 4. 
-Finally, we present our conclusions and future work in Section 5.
+%We next describe our dataset of choice in Section 2.
+%Section 3 describes our methodology and results are presented in Section 4. 
+%Finally, we present our conclusions and future work in Section 5.
 
+\vspace{-2mm}
 \section{Dataset}
+\vspace{-2mm}
 
 We use the {\it Continuous Annotated Creative Commons Emotional Database for affective video content analysis} ({\it continuous LIRIS-ACCEDE}) dataset for the purpose of our experiments.
 This dataset was also used as part of the {\it emotional impact of movies task} organized at the MediaEval challenge 2015 \cite{sjoberg2015mediaeval}.
@@ -102,7 +109,9 @@ The final ratings are obtained as frame-wise mean of annotations from each annot
 For further information regarding the dataset, we refer the reader to \cite{baveye2015liris}.
 In the next section, we describe the features used in our experiments.
 
+\vspace{-2mm}
 \subsection{Feature extraction} \label{feature_extraction}
+\vspace{-2mm}
 We use an assembly of visual, speech and music features to train our models.
 Table \ref{table:features} shows the list of features along with their frame rate and the toolbox used. 
 Note that the frame rates of features from different sources are different.
@@ -128,6 +137,7 @@ Audio & Mel-frequency cepstral coefficients,& & \\
                & frequency, log energy & & \\ \cline{1-2}
 Music & Chroma features (12 semitones) & & \\ 
 \end{tabular}
+\vspace{-4mm}
 \label{table:features}
 \end{table}
 
@@ -135,14 +145,18 @@ Music & Chroma features (12 semitones) & & \\
 \begin{figure}[t]
 \centering
 \includegraphics [trim=0cm 9cm 3cm 0cm,clip=true,scale=.35] {images/features_fig.pdf} 
+\vspace{-10mm}
 \caption{Feature extraction scheme using extraction of statistics over a temporal window of audio/video frames. Length of temporal window is the one that maximizes mutual information of features with the annotations.}
+\vspace{-5mm}
 \label{feat_fig}
 \end{figure}
 
 
 %\indent  A variety of visual, speech and music features are used for training our model. The visual features used are luminance, intensity and optical flow. The speech features are mel-frequency cepstral coefficients, voice probability, zero crossing rate, harmonic to noise ratio, fundamental frequency and energy logarithm. We also include the first and second derivative, and the arithmic mean and standard deviation of the countour of the signal for every speech feature. Lastly we compute 12 semitones for our musical chroma features. We have used the OpenSMILE toolbox for feature extraction. A total of 9 statistics - mean, median, standard deviation, kurtosis, lower and upper quartile, minimum, maximum and range are computed for every feature. We choose a 10 second wide sliding window for calculating our statistics. In total we have 156 visual, speech and musical features, each with nine statistics, thus ending up with a dimension of 1404 for our feature matrix.
 
+\vspace{-2mm}
 \section{Methodology}
+\vspace{-2mm}
 
 We test several regression schemes to predict the continuous valence and affect ratings from the features described in the previous section.
 Initially, we establish a baseline using multiple regression schemes.
@@ -155,7 +169,9 @@ CCC has been used as a metric in several recent time series prediction experimen
 %Along with this, we also report the correlation coefficient and the Root Mean Square Error (RMSE) between the predicted and the true ratings.
 In the next section, we describe the baseline models.
 
+\vspace{-2mm}
 \subsection{Baseline}
+\vspace{-2mm}
 %The features and annotations are available at different time frequencies. The video and audio features have been extracted at a rate of 30 and 100 values per second respectively, whereas the ground truth is annotated for each second. To align both these sequences together, we calculate the aforementioned nine statistics over a sliding window on the feature array and assign the computed feature vector of dimension 1404 to the time second at the center of the window. Concordance correlation coefficient is employed as the evaluation metric. We observe the variation in performance for different models on baseline performance as shown in tables \ref{Valence_table} and \ref{Arousal_table}. 
 
 %Farther analysis of the performance of the baseline models shows the variation in performance across the movies, as shown in figure. The movies in our dataset span a wide variety of genres (figure) and enough training data is not available for each type of movie. One of the examples is the film, \textit{To Claire From Sonny}, which is the only romantic movie in the dataset and thus doesn't match any of the movies in the training set in genre, leading to inaccurate predictions of valence and arousal (shown in the figure). To overcome this problem we require a much larger dataset that should have enough variation to be representative of the different genres of the LIRIS-ACCEDE dataset, but should also be compatible so that the knowledge gathered (trained model) can be used to predict the affective labels in the original dataset.
@@ -178,7 +194,10 @@ We do not perform the correlation coefficient based feature selection with neura
 Table \ref{Baseline_table} shows the results for the performance of these three baseline regression models (the table is shown in results section (Section~\ref{sec:res}) for ease of comparison with other proposed methods). 
 
 
-\subsubsection{Discussion} From the results, we observe that the performance for affect prediction varies across the three models.
+\vspace{-2mm}
+\subsubsection{Discussion} 
+\vspace{-2mm}
+From the results, we observe that the performance for affect prediction varies across the three models.
 %Particularly, the best performing models are different for the two dimensions.
 Neural network regressor performs the best for valence, while linear regression with feature selection performs the best for arousal.
 We further list the performance for each movie as obtained using the best regressors for both arousal and valence in Figure~\ref{comparison}. 
@@ -191,17 +210,22 @@ We propose a knowledge transfer + gradient boosting methodology to address this 
 
 
 \begin{figure*}[t]
+\vspace{-5mm}
 \includegraphics[width=\textwidth, height = 6cm]{images/comparison.pdf}
 \centering
 \vspace{-11mm}
 \caption{Performance of the best baseline model (left) and KT + GB method (right) across the 30 movies in the {\it continuous LIRIS-ACCEDE} dataset. A more variation in performance is observed for the baseline models. The green and purple stars denote the standard deviation about the mean for valence and arousal respectively.}
+\vspace{-5mm}
 \label{comparison}
 \end{figure*}
 
 \begin{figure}[t]
-\includegraphics[width=7cm]{genre2}
 \centering
+\vspace{-1mm}
+\includegraphics[width=7cm]{genre2}
+\vspace{-5mm}
 \caption{Distribution of genre in {\it continuous LIRIS-ACCEDE} dataset}
+\vspace{-5mm}
 \label{genre}
 \end{figure}
 
@@ -214,17 +238,22 @@ Duration			& 3 - 28 minutes			& 8 - 12 seconds		\\ \hline
 Annotation granularity & Continuous (1 value/second)				& Global 				\\ \hline
 Range			& -1 to 1					& 1 to 5				\\ 
 \end{tabular}
+\vspace{-3mm}
 \label{differences}
 \end{table}
 
+\vspace{-2mm}
 \subsection{Proposed method}
+\vspace{-2mm}
 As observed from the results and analysis in the previous section, we need to address the problem of limited data leading to poor generalization of our models.
 In this section, we propose a knowledge transfer combined with a gradient boosting approach to address this issue.
 During KT, we borrow information learnt on a larger (albeit mismatched) dataset for affect prediction on the dataset of interest.
 This is followed by GB, where we combine models learnt on the {\it continuous LIRIS-ACCEDE} with the existing KT models.
 We discuss these proposed models in detail below. 
 
+\vspace{-2mm}
 \subsection{Knowledge Transfer (KT)}
+\vspace{-2mm}
 During KT, we train models on a another dataset and operate them on the {\it continuous LIRIS-ACCEDE} dataset to obtain the affect ratings.
 To this effect, we use the {\it discrete LIRIS-ACCEDE} dataset consisting of a larger set of $\sim$10k movie clips.  
 The {\it discrete LIRIS-ACCEDE} dataset is different from the {\it continuous LIRIS-ACCEDE} dataset in several respects, as summarized in Table \ref{differences}.
@@ -233,14 +262,18 @@ Furthermore, the annotations are provided at the global scale with a single vale
 The annotations are in the range of 1-5 as opposed to the scale of -1 to 1 in the continuous dataset. 
 We describe the model training on the discrete dataset and application on continuous dataset in detail below.
 
+\vspace{-2mm}
 \subsubsection{KT model training}
+\vspace{-2mm}
 Initially, we extract the same of set of features on the discrete dataset as mentioned in the Table~\ref{table:features}.
 However, we compute the statistics (listed in section~\ref{feature_extraction}) over the entire duration of the clip (unlike the window-wise approach for {\it continuous LIRIS-ACCEDE} dataset).
 We then train a regression model on the feature statistics to predict the discrete ratings.
-The choice for regression model is empirically determined to be a ridge regressor based on a 3-fold cross-validation on the {\it discrete LIRIS-ACCEDE} dataset. It's parameters are also tuned using the 3-fold cross-validation. 
+The choice for regression model is empirically determined to be a ridge regressor based on a 3-fold cross-validation on the {\it discrete LIRIS-ACCEDE} dataset. Its parameters are also tuned using the 3-fold cross-validation. 
 
 
+\vspace{-2mm}
 \subsubsection{KT model application}
+\vspace{-2mm}
 In order to apply the model trained on the discrete dataset, we re-use the feature assembly in Table~\ref{table:features}.
 However the feature statistics are computed over a fixed window length of 10 seconds with a shift of 1 second (see Figure~\ref{feat_fig}). 
 This window length is empirically chosen to match the length of clips in the discrete dataset. 
@@ -253,7 +286,9 @@ After the KT step, we train a gradient boosting model as discussed in the next s
 
 %We extract the same set of features for the short video clips of Discrete LIRIS-ACCEDE as we had done for the movies of Continuous LIRIS-ACCEDE. We train a model on the 9800 videos and predict single values of valence and arousal for each second for the movies. To scale the predictions from the range $[1,5]$ to $[-1,1]$, we use linear modeling by minimizing the squared error between the true labels and predictions. 
 
+\vspace{-2mm}
 \subsection{Gradient boosting (GB)}
+\vspace{-2mm}
 %We have used the knowledge gathered from the videos of Discrete LIRIS-ACCEDE to predict the labels of a different dataset, Continuous LIRIS-ACCEDE. However the huge difference in duration between the video clips and movies means that the model cannot still account for the effect of past scenes on the emotions felt by the viewer at the moment. Knowledge transfer predicts the sequence of labels based only on the feature vector of the corresponding second. We leverage the features of the movies to take care of the effect of history while experiencing emotions in viewing a movie.
 
 %We calculate the pseudo-residual error, the difference of the predictions of knowledge transfer and the ground truth. This difference sequence becomes our new target and we train a model on the feature matrix of the movies to predict it. To account for the effect of history on the current annotation of valence and arousal, we shift our feature matrix forward in time relative to the target vector. The delay is found out by maximising mutual information between the shifted feature matrix and target vector. We additionally apply a smooting average filter on our predictions to subtract any noise present in the movie features. We add our predictions of the pseudo-residual error to the output of knowledge transfer to get our new predictions. This process is repeated again until we no longer see an improvement in performance.
@@ -264,7 +299,9 @@ Gupta et al. \cite{gupta2015affect} proposed an approach using linear filters as
 We use a modified approach, where we minimize mean squared error using linear regression on the feature statistics after introducing a temporal delay.
 We refer the reader to \cite{friedman2001greedy,gupta2015affect} for the details of gradient boosting in minimizing the mean squared error and briefly describe the GB model used in our experiments below. 
 
+\vspace{-2mm}
 \subsubsection{Gradient boosting algorithm for affect prediction}
+\vspace{-2mm}
 The proposed gradient boosting learns an ensemble of $K+1$ base learners $\{\tilde{\bm h}_0, \tilde{\bm h}_1, .., \tilde{\bm h}_K\}$, represented as $\bm M_K$. 
 For the set of features ${\bm X}_{\mathcal F}$ for movie $\mathcal F$, the affective predictions $\bm M_K(X_{\mathcal F})$ are computed as  
 
@@ -291,6 +328,7 @@ The subsequent predictions are added to $\tilde{\bm h}_0(\bm X_\mathcal F)$ in a
 \item[--] Compute the pseudo-residuals ${\bm r}_{\mathcal F}^k = [r^k_\mathcal F(1), .., r^k_\mathcal F(n), .., $ $r^k_\mathcal F(N)]$ for each movie $\mathcal F$ in the training set, where	
 
 \begin{equation} \label{pseudores}
+\vspace{-1mm}
 \begin{aligned}
 \hspace{-4mm}\bm r^k_\mathcal F &= -\frac {\partial \bm E} {\partial \bm M_k(\bm X_\mathcal F)} 
 = - { \frac {\partial \Big({\frac{1}{2}\big|\big| \bm t_\mathcal F - {\bm M}_k (\bm X_\mathcal F)\big|\big|^2_2}\Big)} {\partial {\bm M}_k\big({\bm X}_\mathcal F\big)} \bigg|}_{\substack{{\text{at }{\bm M}({\bm X}_\mathcal F) =} \\ {{\bm M}_k({\bm X}_\mathcal F)}}}\\
@@ -307,6 +345,7 @@ The shift is computed using Gaussian assumption and methodology suggested in \ci
 \begin{equation}
 \hspace{-3mm}\gamma_k = \arg\min_{\gamma} \hspace{-4mm} \sum_{\substack{{\mathcal F \in} \\ {\text{training set}}}}\hspace{-2mm} \big|\big| \bm t_\mathcal F - \Big( \bm M_{k-1} (\bm X_\mathcal F) + \gamma_k \times \bm h_k(\bm X_\mathcal F)\Big) \big|\big|^2_2
 \end{equation} 
+\vspace{-4mm}
 
 \item[--] Update the model. 
 \begin{equation}
@@ -366,7 +405,9 @@ The GB models incorporates KT model and is referred to as KT + GB model.
 %=======
 %The performance of the baseline models, knowledge transfer and gradient boosting are shown in tables \ref{Valence_table} and \ref{Arousal_table}. Figure \ref{comparison} compares the performance of baseline models and gradient boosting technique, in both valence and arousal, across the 30 movies of the LIRIS-ACCEDE dataset. \textit{To Claire From Sonny} is a movie from the dataset and has been labelled in the figure. Figure \ref{genre} shows the distribution of genres in the same dataset.
 
+\vspace{-2mm}
 \section{Results and discussion}
+\vspace{-2mm}
 \label{sec:res}
 Table~\ref{KT_table} shows the results for KT and GB models, along with the baseline results in Table~\ref{Baseline_table}.
 From the results, we observe that the KT model on its own outperforms the baseline.
@@ -413,7 +454,9 @@ Linear regression + FS & 0.07  & {\bf 0.11 } \\
 Ridge regression & 0.04  & 0.03  \\ 
 Ridge regression + FS & 0.04  & 0.10  \\ 
 Neural networks& {\bf 0.12 } & 0.02  \\ 
+\hline
 \end{tabular}
+\vspace{-2mm}
 \label{Baseline_table}
 \caption{CCC values for affect prediction using the KT + GB.} 
 \begin{tabular}{@{}l|l|l@{}}
@@ -421,23 +464,30 @@ Neural networks& {\bf 0.12 } & 0.02  \\
 				        & Valence       & Arousal \\ \hline
 Knowledge transfer\;\;\;\;\;& 0.13  & 0.22  \\ 
 Gradient boosting& 0.13  & 0.27  \\ 
+\hline
 \end{tabular}
+\vspace{-4mm}
 \label{KT_table}
 \end{table}
+
+\vspace{-2mm}
 \subsection{Discussion}
+\vspace{-2mm}
 %We can observe the improvement in performance of Knowledge Transfer and Gradient Boosting compared to the baseline models. Among the baseline models, we observe that the linear models perform best for arousal, whereas neural networks show the best performance in valence prediction. There is no significant improvement for Gradient Boosting over Knowledge Transfer for valence prediction. When we analyze the performance farther across the movies, we observe a more consistent performance for both valence and arousal for gradient boosting compared to baseline. The case of the movie \textit{To Claire From Sonny} has already been discussed, and we can see the improvent in CCC after gradient boosting.
 
 In order to compare with the per-movie performance of the baseline system, we present the performance of the KT + GB model in Figure~\ref{comparison} for each movie.
 From the figure, we observe that the performance of the movies is more consistent in the KT + GB models, with fewer movies showing a negative CCC in arousal and valence.
 Further, we compare the standard deviations of per-movie arousal ($\sigma_\text{aro}$) and valence ($\sigma_\text{val}$) performances between the baseline and KT + GB models ($\sigma$ computed over arousal and valence CCC for the 30 movies). 
 $\sigma_\text{aro}$ computed over KT + GB model CCC values is significantly lower than when computed over best baseline model CCC values (F-test, p-value$<$5\%). 
-Although, the reduction in ($\sigma_\text{val}$) using GB models over the best baseline model is not significant (F-test, p-value = ??), we do observe a marginal decrease. 
+Although, the reduction in ($\sigma_\text{val}$) using GB models over the best baseline model is not significant (F-test, p-value = 0.18), we do observe a marginal decrease. 
 
 Overall, our experiments suggest that using KT + GB models outperform the baseline models and the motivation for their use lies in the limited availability of in domain data.
 Our models not only improve the performance of affect prediction, but are also more consistent in predicting affect across the movies in the dataset, sampled from various genres.
 In the next section, we present our conclusions and a few future directions.
 
+\vspace{-2mm}
 \section{Conclusion}
+\vspace{-2mm}
 %Knowledge Transfer from a larger and more varied dataset not only improves performance, but also results in more consistent CCC values for different movies. We have used root mean squared error as a proxy for the evaluation of pseudo-residual error for now. We endeavour to use CCC instead in the farther work. 
 
 Research has extended affect prediction to assess the emotional impact of movies, potentially aiding design and analysis of movies.
@@ -450,8 +500,9 @@ We not only demonstrate the superior performance of KT + GB models on the {\it c
 In the future, we aim to extend the current work to other time series data for media analysis such as interestingness \cite{chen2011violence} and event prediction \cite{butterfield2012interestingness}. 
 From the point of view of modeling, we aim to explore other options such as incorporating CCC as a direct optimization cost (current GB models use squared error as a proxy), exploring other modeling schemes (e.g. neural networks) within the KT + GB models.
 Finally, we also aim to extend the models to other domains with similar issues such as affect in music \cite{broekens2010real} and engagement prediction \cite{gupta2016analysis}. 
+\end{spacing}
 
-\footnotesize{
+{
 \begin{spacing}{.95 }
 %\vfill\pagebreak
 % BiBTeX files (here: strings, refs, manuals). The IEEEbib.bst bibliography
