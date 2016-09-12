@@ -209,16 +209,6 @@ This analysis reflects that a limited data representation despite large diversit
 We propose a knowledge transfer + gradient boosting methodology to address this problem, as is discussed in the next section.
 
 
-\begin{figure*}[t]
-\vspace{-5mm}
-\includegraphics[width=\textwidth, height = 6cm]{images/comparison.pdf}
-\centering
-\vspace{-11mm}
-\caption{Performance of the best baseline model (left) and KT + GB method (right) across the 30 movies in the {\it continuous LIRIS-ACCEDE} dataset. A more variation in performance is observed for the baseline models. The green and purple stars denote the standard deviation about the mean for valence and arousal respectively.}
-\vspace{-5mm}
-\label{comparison}
-\end{figure*}
-
 \begin{figure}[t]
 \centering
 \vspace{-1mm}
@@ -286,6 +276,15 @@ After the KT step, we train a gradient boosting model as discussed in the next s
 
 %We extract the same set of features for the short video clips of Discrete LIRIS-ACCEDE as we had done for the movies of Continuous LIRIS-ACCEDE. We train a model on the 9800 videos and predict single values of valence and arousal for each second for the movies. To scale the predictions from the range $[1,5]$ to $[-1,1]$, we use linear modeling by minimizing the squared error between the true labels and predictions. 
 
+\begin{figure*}[t]
+\vspace{-5mm}
+\includegraphics[width=\textwidth, height = 6cm]{images/comparison.pdf}
+\centering
+\vspace{-11mm}
+\caption{Performance of the best baseline model (left) and KT + GB method (right) across the 30 movies in the {\it continuous LIRIS-ACCEDE} dataset. A more variation in performance is observed for the baseline models. The green and purple stars denote the standard deviation for valence and arousal CCC values, respectively .}
+\vspace{-5mm}
+\label{comparison}
+\end{figure*}
 \vspace{-2mm}
 \subsection{Gradient boosting (GB)}
 \vspace{-2mm}
@@ -339,7 +338,7 @@ The subsequent predictions are added to $\tilde{\bm h}_0(\bm X_\mathcal F)$ in a
 \item[--] Compute a temporal shift in the features that maximizes the mutual information between the shifted features and the pseudo-residuals $\bm r^k_\mathcal F$, computed across all movies in the training set.
 The shift is computed using Gaussian assumption and methodology suggested in \cite{mariooryad2015correcting} (Section 4).
 
-\item[--] Train a linear regressor $\bm h_k$ to predict the pseudo-residual using shifted features.
+\item[--] Train a linear regressor $\bm h_k$ to predict the pseudo-residual using shifted features. During testing, same shift is applied to the testing set features before applying $\bm h_k$.
 
 \item[--] Compute weight $\gamma_k$ for the linear regressor learnt in the last step using the following one-dimensional optimization problem. $\gamma_k$ is the weight used to scale the outputs from the regressor. 
 \begin{equation}
@@ -445,6 +444,7 @@ We perform further analysis regarding the performance of the models on each movi
 
 \begin{table}[t]
 \centering
+\vspace{-3mm}
 \caption{CCC values for affect prediction using the baseline regressors. The best performances for each dimension are shown in bold. FS indicates training with feature selection.}
 \begin{tabular}{@{}l|l|l@{}}
 \hline
@@ -470,7 +470,7 @@ Gradient boosting& 0.13  & 0.27  \\
 \label{KT_table}
 \end{table}
 
-\vspace{-2mm}
+\vspace{-3mm}
 \subsection{Discussion}
 \vspace{-2mm}
 %We can observe the improvement in performance of Knowledge Transfer and Gradient Boosting compared to the baseline models. Among the baseline models, we observe that the linear models perform best for arousal, whereas neural networks show the best performance in valence prediction. There is no significant improvement for Gradient Boosting over Knowledge Transfer for valence prediction. When we analyze the performance farther across the movies, we observe a more consistent performance for both valence and arousal for gradient boosting compared to baseline. The case of the movie \textit{To Claire From Sonny} has already been discussed, and we can see the improvent in CCC after gradient boosting.
@@ -485,9 +485,9 @@ Overall, our experiments suggest that using KT + GB models outperform the baseli
 Our models not only improve the performance of affect prediction, but are also more consistent in predicting affect across the movies in the dataset, sampled from various genres.
 In the next section, we present our conclusions and a few future directions.
 
-\vspace{-2mm}
+\vspace{-3mm}
 \section{Conclusion}
-\vspace{-2mm}
+\vspace{-3mm}
 %Knowledge Transfer from a larger and more varied dataset not only improves performance, but also results in more consistent CCC values for different movies. We have used root mean squared error as a proxy for the evaluation of pseudo-residual error for now. We endeavour to use CCC instead in the farther work. 
 
 Research has extended affect prediction to assess the emotional impact of movies, potentially aiding design and analysis of movies.
