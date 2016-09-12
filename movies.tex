@@ -60,7 +60,7 @@ Gradient Boosting, Knowledge Transfer, affect prediction in movies
 \section{Introduction}
 \vspace{-2mm}
 \label{sec:intro}
-Movies are often (if not always) designed convey a specific emotional experienceon its audience \cite{bartsch2012emotional, canini2009emotional}.
+Movies are often (if not always) designed to convey a specific emotional experience on its audience \cite{bartsch2012emotional, canini2009emotional}.
 Researchers have extended the classical problem of affect prediction to the domain of movies with the goal of understanding the impact of movies as well as aiding the design and analysis of movies \cite{giannakopoulos2009dimensional, jiang2014predicting}. 
 Most of the existing algorithms make use of statistical models trained on audio-visual features to predict affective dimensions (e.g. valence and arousal).  
 These statistical models often require sufficiently large amounts of data for a low generalization error \cite{vapnik1998statistical}.
@@ -118,7 +118,7 @@ Note that the frame rates of features from different sources are different.
 In order to synchronize the features with the annotations, we compute statistics on the features along a temporal window with a shift of 1 second. 
 We compute a set of nine statistics (mean, median, standard deviation, kurtosis, lower and upper quartile, minimum, maximum and range) for every feature. 
 Figure~\ref{feat_fig} depicts the extraction of these statistics on the features.
-We chose the length of the temporal windows by maximizing the mutual information between the computed features and affective dimension labels (available on the training set in a cross-validation framework described in the next section).
+We choose the length of the temporal windows by maximizing the mutual information between the computed features and affective dimension labels (available on the training set in a cross-validation framework described in the next section).
 The mutual information computation assumes a Gaussian distribution for annotations and features, and is implemented as suggested in \cite{mariooryad2015correcting} (Section 4). 
 We denote the set of features for a given movie $\mathcal{F}$ as the vector ${\bf X}_{\mathcal{F}} = [X_{\mathcal{F}}(1), .., X_{\mathcal{F}}(n), .., X_{\mathcal{F}}(N) ]$, where $N$ is the total number of analysis frames (equals annotation frames) and $X_{\mathcal{F}}$(n) is the set of audio and video features extracted for the analysis frame $n$.
 The ground truth annotations are represented as ${\bf t}_{\mathcal F} = [t_\mathcal F(1), .., t_\mathcal F(n), .., t_\mathcal F(N)]$, where $t_\mathcal F(n)$ is the ground truth annotation for the $n^\text{th}$ frame. 
