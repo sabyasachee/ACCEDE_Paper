@@ -43,9 +43,9 @@ Affect prediction in movies is one such domain, potentially aiding the design as
 Given the large diversity in movies (such as different genres and languages), obtaining a comprehensive movie dataset for modeling affect is challenging while models trained on smaller datasets may not generalize. 
 In this paper, we address the problem of continuous affect ratings with the availability of limited in-domain data resources. 
 We initially setup several baseline models trained on in-domain data, followed by a proposal of a Knowledge Transfer (KT) + Gradient Boosting (GB) approach.
-KT learns models on a larger (although mismatched) data which are then adapted to make predictions on the data of interest. 
+KT learns models on a larger (mismatched) data which are then adapted to make predictions on the data of interest. 
 GB further updates these predictions based on models learnt from the in-domain data.
-We observe that the KT + GB models provide Concordance Correlation Coefficient (CCC) values of 0.13 and 0.27 for valence and affect prediction on the {\it continuous LIRIS ACCEDE} dataset against best baseline prediction values of 0.12 and 0.11. 
+We observe that the KT + GB models provide Concordance Correlation Coefficient values of 0.13 and 0.27 for valence and affect prediction on the {\it continuous LIRIS ACCEDE} dataset against best baseline prediction values of 0.12 and 0.11. 
 Not only the KT + GB models improve the overall performance metrics, we also observe a more consistent model performance across movies of various genres. 
  
 \end{abstract}
